@@ -99,7 +99,7 @@ struct VoxelCube
     }
 };
 
-class TFormScene : public TForm
+class TFormSpace : public TForm
 {
 __published:	// IDE-managed Components
 	TStatusBar *StatusBar1;
@@ -151,6 +151,11 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	TPoint *Star;
 	void __fastcall DrawBlocks();
+	TGLSphere *GLSphere1;
+	TGLLightSource *GLLightSource1;
+	TPanel *PanelLeft;
+	TTreeView *TreeView;
+	TPanel *PanelTop;
 	DelaunayBase __fastcall InitDelaunay(String filename, float color[]);
 	VoronoiBase __fastcall InitVoronoi(String filename, float color[]);
 	void __fastcall InitDraw();
@@ -158,10 +163,10 @@ private:	// User declarations
 	void __fastcall DrawDelaunay();
 	void __fastcall DrawVoronoi();
 public:		// User declarations
-	__fastcall TFormScene(TComponent* Owner);
+	__fastcall TFormSpace(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TFormScene *FormScene;
+extern PACKAGE TFormSpace *FormSpace;
 extern String datapath;
 //---------------------------------------------------------------------------
 #endif

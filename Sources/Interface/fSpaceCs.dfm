@@ -1,9 +1,9 @@
-object FormScene: TFormScene
+object FormSpace: TFormSpace
   Left = 0
   Top = 0
   Caption = 'Fermi Paradox Cs'
-  ClientHeight = 577
-  ClientWidth = 847
+  ClientHeight = 609
+  ClientWidth = 980
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,34 +16,38 @@ object FormScene: TFormScene
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 558
-    Width = 847
+    Top = 590
+    Width = 980
     Height = 19
     Panels = <
       item
         Text = 'Total points:'
         Width = 250
       end>
+    ExplicitTop = 558
+    ExplicitWidth = 847
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 0
+    Left = 201
     Top = 0
-    Width = 709
-    Height = 558
+    Width = 641
+    Height = 590
     Camera = Camera
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 100.000000000000000000
+    FieldOfView = 103.129730224609400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 1
   end
   object PanelRight: TPanel
-    Left = 709
+    Left = 842
     Top = 0
     Width = 138
-    Height = 558
+    Height = 590
     Align = alRight
     TabOrder = 2
+    ExplicitLeft = 709
+    ExplicitHeight = 558
     object clbMethods: TCheckListBox
       Left = 6
       Top = 288
@@ -155,6 +159,46 @@ object FormScene: TFormScene
       OnClick = Panel2Click
     end
   end
+  object PanelLeft: TPanel
+    Left = 0
+    Top = 0
+    Width = 201
+    Height = 590
+    Align = alLeft
+    TabOrder = 3
+    object TreeView: TTreeView
+      Left = 1
+      Top = 42
+      Width = 199
+      Height = 547
+      Align = alClient
+      Indent = 19
+      TabOrder = 0
+      Items.NodeData = {
+        0301000000280000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+        000300000001054D006F00640065006C00260000000000000000000000FFFFFF
+        FFFFFFFFFF000000000000000000000000010443006F00620065002A00000000
+        00000000000000FFFFFFFFFFFFFFFF0000000000000000000000000106530070
+        006800650072006500260000000000000000000000FFFFFFFFFFFFFFFF000000
+        00000000000000000001044400690073006300}
+      ExplicitLeft = 32
+      ExplicitTop = 216
+      ExplicitWidth = 121
+      ExplicitHeight = 97
+    end
+    object PanelTop: TPanel
+      Left = 1
+      Top = 1
+      Width = 199
+      Height = 41
+      Align = alTop
+      Caption = 'PanelTop'
+      TabOrder = 1
+      ExplicitLeft = 16
+      ExplicitTop = 89
+      ExplicitWidth = 185
+    end
+  end
   object GLScene1: TGLScene
     Left = 48
     Top = 16
@@ -163,12 +207,12 @@ object FormScene: TFormScene
       FocalLength = 234.108795166015600000
       SceneScale = 0.500000000000000000
       TargetObject = dc1000ly
-      Position.Coordinates = {00007A4400007A4400007A440000803F}
+      Position.Coordinates = {0000964400009644000096440000803F}
     end
     object dc1000ly: TGLDummyCube
       ShowAxes = True
       Pickable = False
-      CubeSize = 400.000000000000000000
+      CubeSize = 1000.000000000000000000
       VisibleAtRunTime = True
       object GLLines1: TGLLines
         Visible = False
@@ -202,6 +246,19 @@ object FormScene: TFormScene
       object dc100ly: TGLDummyCube
         CubeSize = 1.000000000000000000
       end
+    end
+    object GLSphere1: TGLSphere
+      Material.FrontProperties.Ambient.Color = {BEBEBE3E999F1F3F999F1F3F0000803F}
+      Material.FrontProperties.Diffuse.Color = {B1A8A83EB1A8A83EB1A8A83E0000803F}
+      Visible = False
+      Radius = 866.000000000000000000
+      Slices = 62
+      Stacks = 62
+    end
+    object GLLightSource1: TGLLightSource
+      ConstAttenuation = 1.000000000000000000
+      Position.Coordinates = {0000964400000000000000000000803F}
+      SpotCutOff = 180.000000000000000000
     end
   end
   object GLCadencer1: TGLCadencer

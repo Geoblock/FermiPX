@@ -23,7 +23,7 @@
 #pragma link "GLS.Mesh"
 #pragma link "GLS.SimpleNavigation"
 #pragma resource "*.dfm"
-TFormScene* FormScene;
+TFormSpace* FormSpace;
 
 int mx, my; // vars for saving position
 
@@ -63,7 +63,7 @@ String datapath;
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFormScene::FormCreate(TObject* Sender)
+void __fastcall TFormSpace::FormCreate(TObject* Sender)
 {
 	datapath = GetCurrentDir();
 
@@ -71,7 +71,7 @@ void __fastcall TFormScene::FormCreate(TObject* Sender)
 	//	delete(datapath, p + 3, Length(datapath));
 	datapath = IncludeTrailingPathDelimiter(datapath) + "data\\";
 
-	FormScene->Caption = "HYG 3D | Stars mode";
+	FormSpace->Caption = "HYG 3D | Stars mode";
 	Data1->Enabled = false;
 	clbMethods->Checked[0] = true;
 }
@@ -137,7 +137,7 @@ int*** Block(DelaunayBase dt_struct, int sizeCube, int sizeBlock)
 }
 
 // Init Delaunay struct
-DelaunayBase __fastcall TFormScene::InitDelaunay(String filename, float color[])
+DelaunayBase __fastcall TFormSpace::InitDelaunay(String filename, float color[])
 {
     String quer;
     // Connect to specified DB
@@ -223,7 +223,7 @@ DelaunayBase __fastcall TFormScene::InitDelaunay(String filename, float color[])
 
     TVector4i n;
 	for (int i = 0; i < dt_struct.faceCount; i++) {
-        n.X = FDQuery1->FieldByName("Node1")->AsInteger;
+		n.X = FDQuery1->FieldByName("Node1")->AsInteger;
         n.Y = FDQuery1->FieldByName("Node2")->AsInteger;
         n.Z = FDQuery1->FieldByName("Node3")->AsInteger;
         n.W = FDQuery1->FieldByName("Node4")->AsInteger;
@@ -235,7 +235,7 @@ DelaunayBase __fastcall TFormScene::InitDelaunay(String filename, float color[])
 }
 //---------------------------------------------------------------------------
 // Init Voronoi struct
-VoronoiBase __fastcall TFormScene::InitVoronoi(String filename, float color[])
+VoronoiBase __fastcall TFormSpace::InitVoronoi(String filename, float color[])
 {
 	String quer;
     // Connect to specified DB
@@ -318,7 +318,7 @@ VoronoiBase __fastcall TFormScene::InitVoronoi(String filename, float color[])
     return vd_struct;
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::DrawPoints()
+void __fastcall TFormSpace::DrawPoints()
 {
     float X, Y, Z, R, G, B;
 
@@ -449,7 +449,7 @@ void __fastcall TFormScene::DrawPoints()
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::DrawDelaunay()
+void __fastcall TFormSpace::DrawDelaunay()
 {
 	// Delete all points from the scene
 	//GLPoints1->Free();
@@ -666,7 +666,7 @@ void __fastcall TFormScene::DrawDelaunay()
     }
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::DrawVoronoi()
+void __fastcall TFormSpace::DrawVoronoi()
 {
     // Delete all stars from the scene
     //GLPoints1->Free();
@@ -933,7 +933,7 @@ void __fastcall TFormScene::DrawVoronoi()
     }
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::DrawBlocks()
+void __fastcall TFormSpace::DrawBlocks()
 {
     int size, cubeSize, count, half;
     float R, G, B;
@@ -1024,7 +1024,7 @@ void __fastcall TFormScene::DrawBlocks()
     }
 }
 
-void __fastcall TFormScene::InitDraw()
+void __fastcall TFormSpace::InitDraw()
 {
     // Draw 3D model based on selected mode
     if (clbMethods->Checked[0]) {
@@ -1051,24 +1051,24 @@ void __fastcall TFormScene::InitDraw()
 	}  */
 }
 //---------------------------------------------------------------------------
-__fastcall TFormScene::TFormScene(TComponent* Owner) : TForm(Owner) {}
+__fastcall TFormSpace::TFormSpace(TComponent* Owner) : TForm(Owner) {}
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::Timer1Timer(TObject* Sender)
+void __fastcall TFormSpace::Timer1Timer(TObject* Sender)
 {
-    FormScene->StatusBar1->Panels->Items[0]->Text =
-        Format("Total stars: %d", ARRAYOFCONST((GLPoints1->Positions->Count)));
-//    FormScene->StatusBar1->Panels->Items[1]->Text =
+	FormSpace->StatusBar1->Panels->Items[0]->Text =
+		Format("Total stars: %d", ARRAYOFCONST((GLPoints1->Positions->Count)));
+//    FormSpace->StatusBar1->Panels->Items[1]->Text =
 //        Format("FPS: %.2f", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
     GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::GLCadencer1Progress(
+void __fastcall TFormSpace::GLCadencer1Progress(
     TObject* Sender, const double deltaTime, const double newTime)
 {
     GLSceneViewer1->Invalidate();
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::Start1Click(TObject* Sender)
+void __fastcall TFormSpace::Start1Click(TObject* Sender)
 {
     // Auxiliary array with files' names
     String filenames[14];
@@ -1135,32 +1135,32 @@ void __fastcall TFormScene::Start1Click(TObject* Sender)
     InitDraw();
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::clbSpectrasClickCheck(TObject* Sender)
+void __fastcall TFormSpace::clbSpectrasClickCheck(TObject* Sender)
 {
     // Init draw method on each checkbox selecting
     InitDraw();
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormScene::Data1Click(TObject* Sender)
+void __fastcall TFormSpace::Data1Click(TObject* Sender)
 {
     FormTable->Show();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormScene::ClassGroupClick(TObject* Sender)
+void __fastcall TFormSpace::ClassGroupClick(TObject* Sender)
 {
     InitDraw();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormScene::Panel2Click(TObject* Sender)
+void __fastcall TFormSpace::Panel2Click(TObject* Sender)
 {
     ClassGroup->ItemIndex = ((TPanel*)(Sender))->Tag;
     ;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormScene::clbMethodsClickCheck(TObject* Sender)
+void __fastcall TFormSpace::clbMethodsClickCheck(TObject* Sender)
 {
     GLPoints1->Free();
     GLPoints1 = (TGLPoints*)(dc1000ly->AddNewChild(__classid(TGLPoints)));

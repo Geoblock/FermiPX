@@ -152,7 +152,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="Sources\Interface\fSpaceCs.cpp">
-            <Form>FormScene</Form>
+            <Form>FormSpace</Form>
             <FormType>dfm</FormType>
             <DependentOn>Sources\Interface\fSpaceCs.h</DependentOn>
             <BuildOrder>2</BuildOrder>
