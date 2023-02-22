@@ -10,5 +10,6 @@ object frmAbout: TfrmAbout
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 15
 end

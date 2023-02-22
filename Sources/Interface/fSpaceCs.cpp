@@ -74,6 +74,8 @@ void __fastcall TFormSpace::FormCreate(TObject* Sender)
 	FormSpace->Caption = "HYG 3D | Stars mode";
 	Data1->Enabled = false;
 	clbMethods->Checked[0] = true;
+
+    TreeView->FullExpand();
 }
 //---------------------------------------------------------------------------
 // Block
@@ -141,12 +143,12 @@ DelaunayBase __fastcall TFormSpace::InitDelaunay(String filename, float color[])
 {
     String quer;
     // Connect to specified DB
-    FDConnection1->Connected = false;
-    FDConnection1->DriverName = "SQLite";
-    FDConnection1->LoginPrompt = false;
-    FDConnection1->Params->DriverID = "SQLite";
-    FDConnection1->Params->Database = datapath + filename;
-    FDConnection1->Connected = true;
+	FDConnection->Connected = false;
+	FDConnection->DriverName = "SQLite";
+	FDConnection->LoginPrompt = false;
+	FDConnection->Params->DriverID = "SQLite";
+	FDConnection->Params->Database = datapath + filename;
+	FDConnection->Connected = true;
 
 	// Init struct for DT
     DelaunayBase dt_struct;
@@ -154,168 +156,168 @@ DelaunayBase __fastcall TFormSpace::InitDelaunay(String filename, float color[])
     // ------------------------------------------------
     // Getting all vertices for current class of stars
     // ------------------------------------------------
-    FDQuery1->Close();
-    FDQuery1->Connection = FDConnection1;
-    FDQuery1->SQL->Clear();
+	FDQuery->Close();
+	FDQuery->Connection = FDConnection;
+	FDQuery->SQL->Clear();
 
-    quer = "SELECT X,Y,Z FROM dt_node";
-    FDQuery1->SQL->Text = quer;
-    FDQuery1->Open();
+	quer = "SELECT X,Y,Z FROM dt_node";
+	FDQuery->SQL->Text = quer;
+	FDQuery->Open();
 
-    // Go to last record, count all vertices and go to first record
-    FDQuery1->Last();
-	dt_struct.nodeCount = FDQuery1->RecordCount; // DT_node count
-    FDQuery1->First();
+	// Go to last record, count all vertices and go to first record
+	FDQuery->Last();
+	dt_struct.nodeCount = FDQuery->RecordCount; // DT_node count
+	FDQuery->First();
 
-    dt_struct.node = new double*[dt_struct.nodeCount]; // DT_node
-    for (int i = 0; i < dt_struct.nodeCount; ++i)
-        dt_struct.node[i] = new double[3];
+	dt_struct.node = new double*[dt_struct.nodeCount]; // DT_node
+	for (int i = 0; i < dt_struct.nodeCount; ++i)
+		dt_struct.node[i] = new double[3];
 
-    // Init nodes with saved coordinates
-    FDQuery1->First();
-    for (int i = 0; i < dt_struct.nodeCount; i++) {
-        dt_struct.node[i][0] = FDQuery1->FieldByName("X")->AsFloat;
-        dt_struct.node[i][1] = FDQuery1->FieldByName("Y")->AsFloat;
-        dt_struct.node[i][2] = FDQuery1->FieldByName("Z")->AsFloat;
-		FDQuery1->Next();
-    }
+	// Init nodes with saved coordinates
+	FDQuery->First();
+	for (int i = 0; i < dt_struct.nodeCount; i++) {
+		dt_struct.node[i][0] = FDQuery->FieldByName("X")->AsFloat;
+		dt_struct.node[i][1] = FDQuery->FieldByName("Y")->AsFloat;
+		dt_struct.node[i][2] = FDQuery->FieldByName("Z")->AsFloat;
+		FDQuery->Next();
+	}
 
-    //------------------------------------------------
-    // Getting all edges for current class of stars
-    //------------------------------------------------
-    FDQuery1->Close();
-    FDQuery1->SQL->Clear();
-    quer = "SELECT Node1, Node2 FROM dt_edge";
-    FDQuery1->SQL->Text = quer;
-    FDQuery1->Open();
+	//------------------------------------------------
+	// Getting all edges for current class of stars
+	//------------------------------------------------
+	FDQuery->Close();
+	FDQuery->SQL->Clear();
+	quer = "SELECT Node1, Node2 FROM dt_edge";
+	FDQuery->SQL->Text = quer;
+	FDQuery->Open();
 
-    // Go to last record, count all edges and go to first record
-    FDQuery1->Last();
-    dt_struct.edgeCount = FDQuery1->RecordCount; // DT_edge count
-    FDQuery1->First();
+	// Go to last record, count all edges and go to first record
+	FDQuery->Last();
+	dt_struct.edgeCount = FDQuery->RecordCount; // DT_edge count
+	FDQuery->First();
 
-    dt_struct.edge = new int*[dt_struct.edgeCount]; // DT_edge
-    for (int i = 0; i < dt_struct.edgeCount; ++i) {
-        dt_struct.edge[i] = new int[2];
-    }
+	dt_struct.edge = new int*[dt_struct.edgeCount]; // DT_edge
+	for (int i = 0; i < dt_struct.edgeCount; ++i) {
+		dt_struct.edge[i] = new int[2];
+	}
 
-    // Init edges
-    FDQuery1->First();
-    for (int i = 0; i < dt_struct.edgeCount; i++) {
-        dt_struct.edge[i][0] = FDQuery1->FieldByName("Node1")->AsInteger;
-        dt_struct.edge[i][1] = FDQuery1->FieldByName("Node2")->AsInteger;
-        FDQuery1->Next();
-    }
+	// Init edges
+	FDQuery->First();
+	for (int i = 0; i < dt_struct.edgeCount; i++) {
+		dt_struct.edge[i][0] = FDQuery->FieldByName("Node1")->AsInteger;
+		dt_struct.edge[i][1] = FDQuery->FieldByName("Node2")->AsInteger;
+		FDQuery->Next();
+	}
 
-    dt_struct.color = color;
+	dt_struct.color = color;
 
-    FDQuery1->Close();
-    FDQuery1->Connection = FDConnection1;
-    FDQuery1->SQL->Clear();
+	FDQuery->Close();
+	FDQuery->Connection = FDConnection;
+	FDQuery->SQL->Clear();
 
-    quer = "SELECT Node1,Node2,Node3,Node4 FROM dt_ele";
-    FDQuery1->SQL->Text = quer;
-    FDQuery1->Open();
+	quer = "SELECT Node1,Node2,Node3,Node4 FROM dt_ele";
+	FDQuery->SQL->Text = quer;
+	FDQuery->Open();
 
-    FDQuery1->Last();
-    dt_struct.faceCount = FDQuery1->RecordCount; // DT_node count
-    FDQuery1->First();
+	FDQuery->Last();
+	dt_struct.faceCount = FDQuery->RecordCount; // DT_node count
+	FDQuery->First();
 
-    TVector4i n;
+	TVector4i n;
 	for (int i = 0; i < dt_struct.faceCount; i++) {
-		n.X = FDQuery1->FieldByName("Node1")->AsInteger;
-        n.Y = FDQuery1->FieldByName("Node2")->AsInteger;
-        n.Z = FDQuery1->FieldByName("Node3")->AsInteger;
-        n.W = FDQuery1->FieldByName("Node4")->AsInteger;
-        dt_struct.faceNode.push_back(n);
-        FDQuery1->Next();
-    }
+		n.X = FDQuery->FieldByName("Node1")->AsInteger;
+		n.Y = FDQuery->FieldByName("Node2")->AsInteger;
+		n.Z = FDQuery->FieldByName("Node3")->AsInteger;
+		n.W = FDQuery->FieldByName("Node4")->AsInteger;
+		dt_struct.faceNode.push_back(n);
+		FDQuery->Next();
+	}
 
-    return dt_struct;
+	return dt_struct;
 }
 //---------------------------------------------------------------------------
 // Init Voronoi struct
 VoronoiBase __fastcall TFormSpace::InitVoronoi(String filename, float color[])
 {
 	String quer;
-    // Connect to specified DB
-    FDConnection1->Connected = False;
-    FDConnection1->DriverName = "SQLite";
-    FDConnection1->LoginPrompt = False;
-    FDConnection1->Params->DriverID = "SQLite";
-    FDConnection1->Params->Database = datapath + filename;
-    FDConnection1->Connected = True;
+	// Connect to specified DB
+	FDConnection->Connected = False;
+	FDConnection->DriverName = "SQLite";
+	FDConnection->LoginPrompt = False;
+	FDConnection->Params->DriverID = "SQLite";
+	FDConnection->Params->Database = datapath + filename;
+	FDConnection->Connected = True;
 
-    // Init struct for VD
-    VoronoiBase vd_struct;
+	// Init struct for VD
+	VoronoiBase vd_struct;
 
-    // Getting all vertices for current class of stars
-    FDQuery1->Close();
-	FDQuery1->Connection = FDConnection1;
-    FDQuery1->SQL->Clear();
-    quer = "SELECT X,Y,Z FROM vd_node";
-    FDQuery1->SQL->Text = quer;
-    FDQuery1->Open();
+	// Getting all vertices for current class of stars
+	FDQuery->Close();
+	FDQuery->Connection = FDConnection;
+	FDQuery->SQL->Clear();
+	quer = "SELECT X,Y,Z FROM vd_node";
+	FDQuery->SQL->Text = quer;
+	FDQuery->Open();
 
-    // Go to last record, count all vertices and go to first record
-    FDQuery1->Last();
-    vd_struct.nodeCount = FDQuery1->RecordCount; // VD_node count
-    FDQuery1->First();
+	// Go to last record, count all vertices and go to first record
+	FDQuery->Last();
+	vd_struct.nodeCount = FDQuery->RecordCount; // VD_node count
+	FDQuery->First();
 
-    vd_struct.node = new double*[vd_struct.nodeCount]; // VD_node
-    for (int i = 0; i < vd_struct.nodeCount; ++i)
+	vd_struct.node = new double*[vd_struct.nodeCount]; // VD_node
+	for (int i = 0; i < vd_struct.nodeCount; ++i)
 		vd_struct.node[i] = new double[3];
 
 	// Init nodes with saved coordinates
-    FDQuery1->First();
-    for (int i = 0; i < vd_struct.nodeCount; i++) {
-        vd_struct.node[i][0] = FDQuery1->FieldByName("X")->AsFloat;
-        vd_struct.node[i][1] = FDQuery1->FieldByName("Y")->AsFloat;
-        vd_struct.node[i][2] = FDQuery1->FieldByName("Z")->AsFloat;
-        FDQuery1->Next();
-    }
-    //-------------------------------------------------------------------------
-    // Getting all edges for current class of stars
-    FDQuery1->Close();
-    FDQuery1->SQL->Clear();
-    quer = "SELECT Node1, Node2, X, Y, Z FROM vd_edge";
-    FDQuery1->SQL->Text = quer;
-	FDQuery1->Open();
+	FDQuery->First();
+	for (int i = 0; i < vd_struct.nodeCount; i++) {
+		vd_struct.node[i][0] = FDQuery->FieldByName("X")->AsFloat;
+		vd_struct.node[i][1] = FDQuery->FieldByName("Y")->AsFloat;
+		vd_struct.node[i][2] = FDQuery->FieldByName("Z")->AsFloat;
+		FDQuery->Next();
+	}
+	//-------------------------------------------------------------------------
+	// Getting all edges for current class of stars
+	FDQuery->Close();
+	FDQuery->SQL->Clear();
+	quer = "SELECT Node1, Node2, X, Y, Z FROM vd_edge";
+	FDQuery->SQL->Text = quer;
+	FDQuery->Open();
 
-    // Go to last record, count all edges and go to first record
-    FDQuery1->Last();
-    vd_struct.edgeCount = FDQuery1->RecordCount; // VD_edge count
-    FDQuery1->First();
+	// Go to last record, count all edges and go to first record
+	FDQuery->Last();
+	vd_struct.edgeCount = FDQuery->RecordCount; // VD_edge count
+	FDQuery->First();
 
-    vd_struct.edge = new double*[vd_struct.edgeCount]; // VD_edge
-    for (int i = 0; i < vd_struct.edgeCount; ++i) {
-        vd_struct.edge[i] = new double[5];
-    }
+	vd_struct.edge = new double*[vd_struct.edgeCount]; // VD_edge
+	for (int i = 0; i < vd_struct.edgeCount; ++i) {
+		vd_struct.edge[i] = new double[5];
+	}
 
-    // Init edges
-	FDQuery1->First();
-    for (int i = 0; i < vd_struct.edgeCount; i++) {
-		vd_struct.edge[i][0] = FDQuery1->FieldByName("Node1")->AsFloat;
-        vd_struct.edge[i][1] = FDQuery1->FieldByName("Node2")->AsFloat;
+	// Init edges
+	FDQuery->First();
+	for (int i = 0; i < vd_struct.edgeCount; i++) {
+		vd_struct.edge[i][0] = FDQuery->FieldByName("Node1")->AsFloat;
+		vd_struct.edge[i][1] = FDQuery->FieldByName("Node2")->AsFloat;
 
-        // Prevent null value instead of float
-        if (FDQuery1->FieldByName("X") && FDQuery1->FieldByName("Y") &&
-            FDQuery1->FieldByName("Z"))
-        {
-            vd_struct.edge[i][2] = 0;
-            vd_struct.edge[i][3] = 0;
-            vd_struct.edge[i][4] = 0;
-        } else {
-            vd_struct.edge[i][2] = FDQuery1->FieldByName("X")->AsFloat;
-            vd_struct.edge[i][3] = FDQuery1->FieldByName("Y")->AsFloat;
-            vd_struct.edge[i][4] = FDQuery1->FieldByName("Z")->AsFloat;
+		// Prevent null value instead of float
+		if (FDQuery->FieldByName("X") && FDQuery->FieldByName("Y") &&
+			FDQuery->FieldByName("Z"))
+		{
+			vd_struct.edge[i][2] = 0;
+			vd_struct.edge[i][3] = 0;
+			vd_struct.edge[i][4] = 0;
+		} else {
+			vd_struct.edge[i][2] = FDQuery->FieldByName("X")->AsFloat;
+			vd_struct.edge[i][3] = FDQuery->FieldByName("Y")->AsFloat;
+			vd_struct.edge[i][4] = FDQuery->FieldByName("Z")->AsFloat;
 		}
-        FDQuery1->Next();
-    }
+		FDQuery->Next();
+	}
 
-    vd_struct.color = color;
+	vd_struct.color = color;
 
-    return vd_struct;
+	return vd_struct;
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormSpace::DrawPoints()
@@ -1053,7 +1055,7 @@ void __fastcall TFormSpace::InitDraw()
 //---------------------------------------------------------------------------
 __fastcall TFormSpace::TFormSpace(TComponent* Owner) : TForm(Owner) {}
 //---------------------------------------------------------------------------
-void __fastcall TFormSpace::Timer1Timer(TObject* Sender)
+void __fastcall TFormSpace::TimerTimer(TObject* Sender)
 {
 	FormSpace->StatusBar1->Panels->Items[0]->Text =
 		Format("Total stars: %d", ARRAYOFCONST((GLPoints1->Positions->Count)));
@@ -1162,15 +1164,22 @@ void __fastcall TFormSpace::Panel2Click(TObject* Sender)
 
 void __fastcall TFormSpace::clbMethodsClickCheck(TObject* Sender)
 {
-    GLPoints1->Free();
-    GLPoints1 = (TGLPoints*)(dc1000ly->AddNewChild(__classid(TGLPoints)));
-    GLLines1->Free();
-    GLLines1 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
-    GLLines2->Free();
-    GLLines2 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
-    dc100ly->Free();
-    dc100ly = (TGLDummyCube*)(dc1000ly->AddNewChild(__classid(TGLDummyCube)));
-    InitDraw();
+	GLPoints1->Free();
+	GLPoints1 = (TGLPoints*)(dc1000ly->AddNewChild(__classid(TGLPoints)));
+	GLLines1->Free();
+	GLLines1 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
+	GLLines2->Free();
+	GLLines2 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
+	dc100ly->Free();
+	dc100ly = (TGLDummyCube*)(dc1000ly->AddNewChild(__classid(TGLDummyCube)));
+	InitDraw();
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSpace::Exit1Click(TObject *Sender)
+{
+ Close();
 }
 //---------------------------------------------------------------------------
 

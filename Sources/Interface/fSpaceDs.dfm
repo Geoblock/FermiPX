@@ -1,7 +1,7 @@
-object FormScene: TFormScene
+object FormSpace: TFormSpace
   Left = 0
   Top = 0
-  Caption = 'Fermi Paradox Ds'
+  Caption = 'Fermi Paradox Solutions'
   ClientHeight = 668
   ClientWidth = 1066
   Color = clBtnFace
@@ -11,7 +11,7 @@ object FormScene: TFormScene
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = MainMenu1
-  WindowState = wsMaximized
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object StatusBar1: TStatusBar
@@ -87,9 +87,9 @@ object FormScene: TFormScene
     TabOrder = 3
     object TreeView1: TTreeView
       Left = 1
-      Top = 1
+      Top = 42
       Width = 183
-      Height = 647
+      Height = 606
       Align = alClient
       Indent = 19
       TabOrder = 0
@@ -97,6 +97,20 @@ object FormScene: TFormScene
         0302000000300000000000000000000000FFFFFFFFFFFFFFFF00000000000000
         0000000000010953006F006C007500740069006F006E0073001E000000000000
         0000000000FFFFFFFFFFFFFFFF0000000000000000000000000100}
+      ExplicitTop = 48
+      ExplicitHeight = 600
+    end
+    object Panel1: TPanel
+      Left = 1
+      Top = 1
+      Width = 183
+      Height = 41
+      Align = alTop
+      Caption = 'Panel1'
+      TabOrder = 1
+      ExplicitLeft = 80
+      ExplicitTop = 16
+      ExplicitWidth = 217
     end
   end
   object GLScene1: TGLScene
@@ -173,45 +187,49 @@ object FormScene: TFormScene
   object MainMenu1: TMainMenu
     Left = 368
     Top = 104
-    object mnFile: TMenuItem
+    object miFile: TMenuItem
       Caption = 'File'
+      object miOpen: TMenuItem
+        Caption = 'Open'
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object miExit: TMenuItem
+        Caption = 'Exit'
+        OnClick = miExitClick
+      end
     end
-    object Mode1: TMenuItem
+    object miModeling: TMenuItem
       Caption = 'Mode'
-      object Points1: TMenuItem
+      object miPoints: TMenuItem
         Caption = 'Points'
         RadioItem = True
       end
-      object Delaunay1: TMenuItem
+      object miDelaunay: TMenuItem
         Caption = 'Delaunay'
         RadioItem = True
       end
-      object Voronoi1: TMenuItem
+      object miVoronoi: TMenuItem
         Caption = 'Voronoi'
         RadioItem = True
       end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object Exit1: TMenuItem
-        Caption = 'Exit'
-      end
     end
-    object Data1: TMenuItem
+    object miData: TMenuItem
       Caption = 'Data'
     end
-    object ools1: TMenuItem
+    object miTools: TMenuItem
       Caption = 'Tools'
-      object Options1: TMenuItem
+      object miOptions: TMenuItem
         Caption = 'Options...'
-        OnClick = Options1Click
+        OnClick = miOptionsClick
       end
     end
-    object Help1: TMenuItem
+    object miHelp: TMenuItem
       Caption = 'Help'
-      object About1: TMenuItem
+      object miAbout: TMenuItem
         Caption = 'About...'
-        OnClick = About1Click
+        OnClick = miAboutClick
       end
     end
   end

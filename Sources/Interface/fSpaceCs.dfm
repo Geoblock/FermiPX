@@ -1,7 +1,7 @@
 object FormSpace: TFormSpace
   Left = 0
   Top = 0
-  Caption = 'Fermi Paradox Cs'
+  Caption = 'Fermi Paradox Simulator'
   ClientHeight = 609
   ClientWidth = 980
   Color = clBtnFace
@@ -10,7 +10,7 @@ object FormSpace: TFormSpace
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = MainMenu1
+  Menu = MainMenu
   Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
@@ -24,8 +24,6 @@ object FormSpace: TFormSpace
         Text = 'Total points:'
         Width = 250
       end>
-    ExplicitTop = 558
-    ExplicitWidth = 847
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 201
@@ -46,8 +44,6 @@ object FormSpace: TFormSpace
     Height = 590
     Align = alRight
     TabOrder = 2
-    ExplicitLeft = 709
-    ExplicitHeight = 558
     object clbMethods: TCheckListBox
       Left = 6
       Top = 288
@@ -181,10 +177,6 @@ object FormSpace: TFormSpace
         00000000000000FFFFFFFFFFFFFFFF0000000000000000000000000106530070
         006800650072006500260000000000000000000000FFFFFFFFFFFFFFFF000000
         00000000000000000001044400690073006300}
-      ExplicitLeft = 32
-      ExplicitTop = 216
-      ExplicitWidth = 121
-      ExplicitHeight = 97
     end
     object PanelTop: TPanel
       Left = 1
@@ -192,14 +184,10 @@ object FormSpace: TFormSpace
       Width = 199
       Height = 41
       Align = alTop
-      Caption = 'PanelTop'
       TabOrder = 1
-      ExplicitLeft = 16
-      ExplicitTop = 89
-      ExplicitWidth = 185
     end
   end
-  object GLScene1: TGLScene
+  object GLScene: TGLScene
     Left = 48
     Top = 16
     object Camera: TGLCamera
@@ -261,18 +249,12 @@ object FormSpace: TFormSpace
       SpotCutOff = 180.000000000000000000
     end
   end
-  object GLCadencer1: TGLCadencer
-    Scene = GLScene1
-    OnProgress = GLCadencer1Progress
-    Left = 48
-    Top = 104
+  object Timer: TTimer
+    OnTimer = TimerTimer
+    Left = 56
+    Top = 132
   end
-  object Timer1: TTimer
-    OnTimer = Timer1Timer
-    Left = 192
-    Top = 112
-  end
-  object MainMenu1: TMainMenu
+  object MainMenu: TMainMenu
     Left = 336
     Top = 16
     object Start1: TMenuItem
@@ -283,6 +265,7 @@ object FormSpace: TFormSpace
       end
       object Exit1: TMenuItem
         Caption = 'Exit'
+        OnClick = Exit1Click
       end
     end
     object Data1: TMenuItem
@@ -299,29 +282,29 @@ object FormSpace: TFormSpace
       end
     end
   end
-  object OpenTextFileDialog1: TOpenTextFileDialog
-    Left = 768
-    Top = 88
+  object OpenTextFileDialog: TOpenTextFileDialog
+    Left = 424
+    Top = 214
   end
-  object FDConnection1: TFDConnection
+  object FDConnection: TFDConnection
     Params.Strings = (
       'DriverID=SQLite')
     Left = 600
     Top = 16
   end
-  object FDQuery1: TFDQuery
-    Connection = FDConnection1
+  object FDQuery: TFDQuery
+    Connection = FDConnection
     Left = 600
     Top = 80
   end
-  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
-    Left = 760
-    Top = 16
+  object FDPhysSQLiteDriverLink: TFDPhysSQLiteDriverLink
+    Left = 546
+    Top = 105
   end
-  object GLSimpleNavigation1: TGLSimpleNavigation
+  object GLSimpleNavigation: TGLSimpleNavigation
     Form = Owner
     GLSceneViewer = GLSceneViewer1
-    FormCaption = 'FermiPCs'
+    FormCaption = 'Fermi Paradox Simulator'
     KeyCombinations = <
       item
         ShiftState = [ssLeft, ssRight]
@@ -337,5 +320,10 @@ object FormSpace: TFormSpace
       end>
     Left = 192
     Top = 16
+  end
+  object GLCadencer: TGLCadencer
+    Scene = GLScene
+    Left = 72
+    Top = 264
   end
 end

@@ -2,7 +2,7 @@ program FermiPDs;
 
 uses
   Vcl.Forms,
-  fSpaceDs in 'Sources\Interface\fSpaceDs.pas' {FormScene},
+  fSpaceDs in 'Sources\Interface\fSpaceDs.pas' {FormSpace},
   fTableDs in 'Sources\Interface\fTableDs.pas' {Form1},
   uRandomAM in 'Sources\Code\uRandomAM.pas',
   fOptionsDs in 'Sources\Interface\fOptionsDs.pas' {frmOptions},
@@ -14,6 +14,6 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormScene, FormScene);
+  Application.CreateForm(TFormSpace, FormSpace);
   Application.Run;
 end.

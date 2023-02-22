@@ -75,8 +75,8 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>..\..\FermiPX\Sources\Interface\;..\..\GalaxiLS\Sources\;..\;Interface\;Sources\;Sources\Interface\;..\FermiPC\;..\FermiPX\;..\LAB1 - Cube and Stars\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>..\..\FermiPX\Sources\Interface\;..\..\GalaxiLS\Sources\;..\;Interface\;Sources\;Sources\Interface\;..\FermiPC\;..\FermiPX\;..\LAB1 - Cube and Stars\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>..\..\FermiPX\Sources\Interface\;..\;Interface\;Sources\;Sources\Interface\;..\FermiPC\;..\FermiPX\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\..\FermiPX\Sources\Interface\;..\;Interface\;Sources\;Sources\Interface\;..\FermiPC\;..\FermiPX\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>FermiPCs</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">

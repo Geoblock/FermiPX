@@ -84,7 +84,7 @@ VoronoiBase = record
 end;
 
 type
-  TFormScene = class(TForm)
+  TFormSpace = class(TForm)
     StatusBar1: TStatusBar;
     GLSceneViewer1: TGLSceneViewer;
     PanelRight: TPanel;
@@ -101,37 +101,40 @@ type
     GLCadencer1: TGLCadencer;
     Timer1: TTimer;
     MainMenu1: TMainMenu;
-    mnFile: TMenuItem;
-    Mode1: TMenuItem;
-    Points1: TMenuItem;
-    Delaunay1: TMenuItem;
-    Voronoi1: TMenuItem;
-    N1: TMenuItem;
-    Exit1: TMenuItem;
-    Data1: TMenuItem;
+    miFile: TMenuItem;
+    miModeling: TMenuItem;
+    miPoints: TMenuItem;
+    miDelaunay: TMenuItem;
+    miVoronoi: TMenuItem;
+    miData: TMenuItem;
     OpenTextFileDialog1: TOpenTextFileDialog;
     FDConnection1: TFDConnection;
     FDQuery1: TFDQuery;
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
     GLSimpleNavigation1: TGLSimpleNavigation;
     GLXYZGrid1: TGLXYZGrid;
-    ools1: TMenuItem;
-    Help1: TMenuItem;
-    About1: TMenuItem;
-    Options1: TMenuItem;
+    miTools: TMenuItem;
+    miHelp: TMenuItem;
+    miAbout: TMenuItem;
+    miOptions: TMenuItem;
     PanelLeft: TPanel;
     TreeView1: TTreeView;
+    miOpen: TMenuItem;
+    N2: TMenuItem;
+    miExit: TMenuItem;
+    Panel1: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure Options1Click(Sender: TObject);
-    procedure About1Click(Sender: TObject);
+    procedure miOptionsClick(Sender: TObject);
+    procedure miAboutClick(Sender: TObject);
+    procedure miExitClick(Sender: TObject);
   private
   public
   end;
 
 var
-  FormScene: TFormScene;
+  FormSpace: TFormSpace;
   mx, my : Integer; // vars for saving position
 
   // All Delaunay records
@@ -170,26 +173,31 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormScene.FormCreate(Sender: TObject);
+procedure TFormSpace.FormCreate(Sender: TObject);
 begin
-	Points1.Checked := True;
+	miPoints.Checked := True;
  //	Form1.Caption := 'HYG 3D | Points mode';
 
-	Mode1.Enabled := False;
-	Data1.Enabled := False;
+	miModeling.Enabled := False;
+	miData.Enabled := False;
 
 	CheckListBox1.Checked[0] := True;
 end;
 
-procedure TFormScene.GLSceneViewer1MouseDown(Sender: TObject;
+procedure TFormSpace.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
 	 mx := X; my := Y;
 end;
 
-procedure TFormScene.Options1Click(Sender: TObject);
+procedure TFormSpace.miExitClick(Sender: TObject);
 begin
-  with frmOptions.Create(Self) do
+  Close;
+end;
+
+procedure TFormSpace.miOptionsClick(Sender: TObject);
+begin
+  with TfrmOptions.Create(Self) do
     try
       ShowModal;
     finally
@@ -197,7 +205,7 @@ begin
     end;
 end;
 
-procedure TFormScene.About1Click(Sender: TObject);
+procedure TFormSpace.miAboutClick(Sender: TObject);
 begin
   with TfrmAbout.Create(Self) do
     try

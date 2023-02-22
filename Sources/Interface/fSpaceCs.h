@@ -85,7 +85,7 @@ struct VoxelCube
 	}
 	int Increase(int number) {
 		starCount[number]++;
-        return starCount[number];
+		return starCount[number];
     }
 	int TakeMostClass() {
 		int max = 0;
@@ -104,18 +104,17 @@ class TFormSpace : public TForm
 __published:	// IDE-managed Components
 	TStatusBar *StatusBar1;
 	TGLSceneViewer *GLSceneViewer1;
-	TGLScene *GLScene1;
-	TGLCadencer *GLCadencer1;
-	TTimer *Timer1;
-	TMainMenu *MainMenu1;
+	TGLScene *GLScene;
+	TTimer *Timer;
+	TMainMenu *MainMenu;
 	TGLDummyCube *dc1000ly;
 	TGLCamera *Camera;
-	TOpenTextFileDialog *OpenTextFileDialog1;
+	TOpenTextFileDialog *OpenTextFileDialog;
 	TGLPoints *GLPoints1;
-	TFDConnection *FDConnection1;
-	TFDQuery *FDQuery1;
+	TFDConnection *FDConnection;
+	TFDQuery *FDQuery;
 	TMenuItem *Start1;
-	TFDPhysSQLiteDriverLink *FDPhysSQLiteDriverLink1;
+	TFDPhysSQLiteDriverLink *FDPhysSQLiteDriverLink;
 	TGLLines *GLLines1;
 	TGLPolygon *GLPolygon1;
 	TGLTetrahedron *GLTetrahedron1;
@@ -133,13 +132,19 @@ __published:	// IDE-managed Components
 	TPanel *Panel7;
 	TGLLines *GLLines2;
 	TGLDummyCube *dc100ly;
-	TGLSimpleNavigation *GLSimpleNavigation1;
+	TGLSimpleNavigation *GLSimpleNavigation;
 	TMenuItem *Exit1;
 	TMenuItem *Help1;
 	TMenuItem *Contents1;
 	TMenuItem *About1;
 	TMenuItem *Open1;
-	void __fastcall Timer1Timer(TObject *Sender);
+	TPanel *PanelLeft;
+	TTreeView *TreeView;
+	TPanel *PanelTop;
+	TGLCadencer *GLCadencer;
+	TGLSphere *GLSphere1;
+	TGLLightSource *GLLightSource1;
+	void __fastcall TimerTimer(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Start1Click(TObject *Sender);
@@ -148,14 +153,10 @@ __published:	// IDE-managed Components
 	void __fastcall ClassGroupClick(TObject *Sender);
 	void __fastcall Panel2Click(TObject *Sender);
 	void __fastcall clbMethodsClickCheck(TObject *Sender);
+	void __fastcall Exit1Click(TObject *Sender);
 private:	// User declarations
 	TPoint *Star;
 	void __fastcall DrawBlocks();
-	TGLSphere *GLSphere1;
-	TGLLightSource *GLLightSource1;
-	TPanel *PanelLeft;
-	TTreeView *TreeView;
-	TPanel *PanelTop;
 	DelaunayBase __fastcall InitDelaunay(String filename, float color[]);
 	VoronoiBase __fastcall InitVoronoi(String filename, float color[]);
 	void __fastcall InitDraw();

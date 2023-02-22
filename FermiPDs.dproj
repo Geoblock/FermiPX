@@ -128,7 +128,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Sources\Interface\fSpaceDs.pas">
-            <Form>FormScene</Form>
+            <Form>FormSpace</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Sources\Interface\fTableDs.pas">
