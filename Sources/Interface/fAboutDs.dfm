@@ -1,0 +1,14 @@
+object frmAbout: TfrmAbout
+  Left = 0
+  Top = 0
+  Caption = 'About'
+  ClientHeight = 349
+  ClientWidth = 446
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+end
