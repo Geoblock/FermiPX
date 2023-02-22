@@ -6,7 +6,7 @@
 
 #pragma hdrstop
 
-#include "fSceneCs.h"
+#include "fSpaceCs.h"
 #include "fTableCs.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

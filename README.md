@@ -7,4 +7,4 @@ The simulator is using the convolution of birth and death for various spectral s
 of habitable exoplanets with supposed intelligent life recalculating Voronoi mesh and excluding voids. 
 
 Common requirements: Windows 10/11 32/64 bits. 
-VpV
+vPv
