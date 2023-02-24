@@ -72,7 +72,7 @@ void __fastcall TFormSpace::FormCreate(TObject* Sender)
 	datapath = IncludeTrailingPathDelimiter(datapath) + "data\\";
 
 	FormSpace->Caption = "HYG 3D | Stars mode";
-	Data1->Enabled = false;
+	miTable->Enabled = false;
 	clbMethods->Checked[0] = true;
 
     TreeView->FullExpand();
@@ -326,13 +326,13 @@ void __fastcall TFormSpace::DrawPoints()
 
 	// Delete all points from the scene
     GLPoints1->Free();
-	GLPoints1 = (TGLPoints*)(dc1000ly->AddNewChild(__classid(TGLPoints)));
+	GLPoints1 = (TGLPoints*)(dcGalaBlock->AddNewChild(__classid(TGLPoints)));
 
     GLPoints1->Size = 2;
     GLPoints1->Positions->Clear();
     // Delete all lines from the scene
     //GLLines1->Free();
-    //GLLines1 = (TGLLines *)(dc1000ly->AddNewChild(__classid(TGLLines)));
+    //GLLines1 = (TGLLines *)(dcGalaBlock->AddNewChild(__classid(TGLLines)));
 
     // Temp vars for coordinates and colors values
     switch (ClassGroup->ItemIndex) {
@@ -349,7 +349,7 @@ void __fastcall TFormSpace::DrawPoints()
                 GLPoints1->Positions->Add(X, Y, Z);
                 GLPoints1->Colors->AddPoint(R, G, B);
             }
-            break;
+			break;
         case 1:
             for (int i = 0; i < O_Delaunay.nodeCount; i++) {
                 X = O_Delaunay.node[i][0] * MULTICOEF;
@@ -381,7 +381,7 @@ void __fastcall TFormSpace::DrawPoints()
         case 3:
             for (int i = 0; i < A_Delaunay.nodeCount; i++) {
                 X = A_Delaunay.node[i][0] * MULTICOEF;
-                Y = A_Delaunay.node[i][1] * MULTICOEF;
+				Y = A_Delaunay.node[i][1] * MULTICOEF;
 				Z = A_Delaunay.node[i][2] * MULTICOEF;
 
 				R = A_Delaunay.color[0];
@@ -455,14 +455,14 @@ void __fastcall TFormSpace::DrawDelaunay()
 {
 	// Delete all points from the scene
 	//GLPoints1->Free();
-	//GLPoints1 = (TGLPoints *)(dc1000ly->AddNewChild(__classid(TGLPoints)));
+	//GLPoints1 = (TGLPoints *)(dcGalaBlock->AddNewChild(__classid(TGLPoints)));
 	// Delete all lines from the scene
 	GLLines1->Free();
-	GLLines1 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
+	GLLines1 = (TGLLines*)(dcGalaBlock->AddNewChild(__classid(TGLLines)));
 
 	// Delete all faces from the scene
 	//GLPolygon1->Free();
-	//GLPolygon1 = (TGLPolygon *)(dc1000ly->AddNewChild(__classid(TGLPolygon)));
+	//GLPolygon1 = (TGLPolygon *)(dcGalaBlock->AddNewChild(__classid(TGLPolygon)));
 
 	float X1, Y1, Z1, X2, Y2, Z2, R, G, B;
 	int NodeIndex1, NodeIndex2, NodeIndex3;
@@ -509,7 +509,7 @@ void __fastcall TFormSpace::DrawDelaunay()
 
                 GLLines1->Nodes->AddNode(X1, Y1, Z1);
                 GLLines1->Nodes->AddNode(X2, Y2, Z2);
-            }
+			}
             // Set edges color
             GLLines1->LineColor->SetColor(R, G, B, 1);
             // Delete axes of points
@@ -541,7 +541,7 @@ void __fastcall TFormSpace::DrawDelaunay()
             GLLines1->NodesAspect = lnaInvisible;
             break;
         case 3:
-            R = A_Delaunay.color[0];
+			R = A_Delaunay.color[0];
             G = A_Delaunay.color[1];
 			B = A_Delaunay.color[2];
 
@@ -637,7 +637,7 @@ void __fastcall TFormSpace::DrawDelaunay()
             }
             // Set edges color
             GLLines1->LineColor->SetColor(R, G, B, 1);
-            // Delete axes of points
+			// Delete axes of points
             GLLines1->NodesAspect = lnaInvisible;
 			break;
         case 7:
@@ -672,11 +672,11 @@ void __fastcall TFormSpace::DrawVoronoi()
 {
     // Delete all stars from the scene
     //GLPoints1->Free();
-	//GLPoints1 = (TGLPoints *)(dc1000ly->AddNewChild(__classid(TGLPoints)));
+	//GLPoints1 = (TGLPoints *)(dcGalaBlock->AddNewChild(__classid(TGLPoints)));
 
 	// Delete all lines from the scene
     GLLines2->Free();
-    GLLines2 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
+    GLLines2 = (TGLLines*)(dcGalaBlock->AddNewChild(__classid(TGLLines)));
 
     // Temp vars for coordinates and colors values
     float X, Y, Z, R, G, B;
@@ -701,7 +701,7 @@ void __fastcall TFormSpace::DrawVoronoi()
                     X2 = All_Voronoi.edge[i][2];
                     Y2 = All_Voronoi.edge[i][3];
                     Z2 = All_Voronoi.edge[i][4];
-                } else {
+				} else {
                     X2 = All_Voronoi.node[NodeIndex2][0] * MULTICOEF;
 					Y2 = All_Voronoi.node[NodeIndex2][1] * MULTICOEF;
                     Z2 = All_Voronoi.node[NodeIndex2][2] * MULTICOEF;
@@ -733,7 +733,7 @@ void __fastcall TFormSpace::DrawVoronoi()
                     Y2 = O_Voronoi.edge[i][3];
                     Z2 = O_Voronoi.edge[i][4];
 				} else {
-                    X2 = O_Voronoi.node[NodeIndex2][0] * MULTICOEF;
+					X2 = O_Voronoi.node[NodeIndex2][0] * MULTICOEF;
                     Y2 = O_Voronoi.node[NodeIndex2][1] * MULTICOEF;
                     Z2 = O_Voronoi.node[NodeIndex2][2] * MULTICOEF;
                 }
@@ -765,7 +765,7 @@ void __fastcall TFormSpace::DrawVoronoi()
                     Z2 = B_Voronoi.edge[i][4];
                 } else {
                     X2 = B_Voronoi.node[NodeIndex2][0] * MULTICOEF;
-                    Y2 = B_Voronoi.node[NodeIndex2][1] * MULTICOEF;
+					Y2 = B_Voronoi.node[NodeIndex2][1] * MULTICOEF;
                     Z2 = B_Voronoi.node[NodeIndex2][2] * MULTICOEF;
 				}
 
@@ -829,7 +829,7 @@ void __fastcall TFormSpace::DrawVoronoi()
 					X2 = F_Voronoi.node[NodeIndex2][0] * MULTICOEF;
                     Y2 = F_Voronoi.node[NodeIndex2][1] * MULTICOEF;
                     Z2 = F_Voronoi.node[NodeIndex2][2] * MULTICOEF;
-                }
+				}
 
                 GLLines2->Nodes->AddNode(X1, Y1, Z1);
                 GLLines2->Nodes->AddNode(X2, Y2, Z2);
@@ -893,7 +893,7 @@ void __fastcall TFormSpace::DrawVoronoi()
                     Z2 = K_Voronoi.node[NodeIndex2][2] * MULTICOEF;
                 }
 
-                GLLines2->Nodes->AddNode(X1, Y1, Z1);
+				GLLines2->Nodes->AddNode(X1, Y1, Z1);
                 GLLines2->Nodes->AddNode(X2, Y2, Z2);
             }
             // Set edges color
@@ -925,7 +925,7 @@ void __fastcall TFormSpace::DrawVoronoi()
                 }
 
                 GLLines2->Nodes->AddNode(X1, Y1, Z1);
-                GLLines2->Nodes->AddNode(X2, Y2, Z2);
+				GLLines2->Nodes->AddNode(X2, Y2, Z2);
             }
             // Set edges color
             GLLines2->LineColor->SetColor(R * 0.7, G * 0.7, B * 0.7, 1);
@@ -995,7 +995,7 @@ void __fastcall TFormSpace::DrawBlocks()
 	}
 	//if (clbMethods->Checked[0]==false && clbMethods->Checked[0]==false && clbMethods->Checked[0]==false) {
 	dc100ly->Free();
-	dc100ly = (TGLDummyCube*)(dc1000ly->AddNewChild(__classid(TGLDummyCube)));
+	dc100ly = (TGLDummyCube*)(dcGalaBlock->AddNewChild(__classid(TGLDummyCube)));
 	int x, y, z;
 	for (int i = 0; i < count; i++) {
 		for (int j = 0; j < count; j++) {
@@ -1021,7 +1021,7 @@ void __fastcall TFormSpace::DrawBlocks()
                     cube->Position->Y = y * cubeSize + cubeSize / 2;
                     cube->Position->Z = z * cubeSize + cubeSize / 2;
                 }
-            }
+			}
 		}
     }
 }
@@ -1085,7 +1085,7 @@ void __fastcall TFormSpace::Start1Click(TObject* Sender)
     filenames[8] = "G_Delaunay.sqlite";
     filenames[9] = "G_Voronoi.sqlite";
     filenames[10] = "K_Delaunay.sqlite";
-    filenames[11] = "K_Voronoi.sqlite";
+	filenames[11] = "K_Voronoi.sqlite";
     filenames[12] = "M_Delaunay.sqlite";
     filenames[13] = "M_Voronoi.sqlite";
 
@@ -1117,7 +1117,7 @@ void __fastcall TFormSpace::Start1Click(TObject* Sender)
     Points[3] = G_Delaunay;
     Points[4] = K_Delaunay;
     Points[5] = M_Delaunay;
-    Points[6] = O_Delaunay;
+	Points[6] = O_Delaunay;
 	InitBlock(Points, 300, 10);
 
     // Init all Voronoi data
@@ -1131,7 +1131,7 @@ void __fastcall TFormSpace::Start1Click(TObject* Sender)
     O_Voronoi = InitVoronoi("O_Vor.sqlite", lightblue);
 
     Start1->Enabled = False;
-    Data1->Enabled = True;
+    miTable->Enabled = True;
 
     // Visualization
     InitDraw();
@@ -1143,7 +1143,7 @@ void __fastcall TFormSpace::clbSpectrasClickCheck(TObject* Sender)
     InitDraw();
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormSpace::Data1Click(TObject* Sender)
+void __fastcall TFormSpace::miTableClick(TObject* Sender)
 {
     FormTable->Show();
 }
@@ -1157,21 +1157,20 @@ void __fastcall TFormSpace::ClassGroupClick(TObject* Sender)
 
 void __fastcall TFormSpace::Panel2Click(TObject* Sender)
 {
-    ClassGroup->ItemIndex = ((TPanel*)(Sender))->Tag;
-    ;
+	ClassGroup->ItemIndex = ((TPanel*)(Sender))->Tag;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TFormSpace::clbMethodsClickCheck(TObject* Sender)
 {
 	GLPoints1->Free();
-	GLPoints1 = (TGLPoints*)(dc1000ly->AddNewChild(__classid(TGLPoints)));
+	GLPoints1 = (TGLPoints*)(dcGalaBlock->AddNewChild(__classid(TGLPoints)));
 	GLLines1->Free();
-	GLLines1 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
+	GLLines1 = (TGLLines*)(dcGalaBlock->AddNewChild(__classid(TGLLines)));
 	GLLines2->Free();
-	GLLines2 = (TGLLines*)(dc1000ly->AddNewChild(__classid(TGLLines)));
+	GLLines2 = (TGLLines*)(dcGalaBlock->AddNewChild(__classid(TGLLines)));
 	dc100ly->Free();
-	dc100ly = (TGLDummyCube*)(dc1000ly->AddNewChild(__classid(TGLDummyCube)));
+	dc100ly = (TGLDummyCube*)(dcGalaBlock->AddNewChild(__classid(TGLDummyCube)));
 	InitDraw();
 }
 

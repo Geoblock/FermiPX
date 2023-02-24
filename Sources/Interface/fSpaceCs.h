@@ -107,7 +107,7 @@ __published:	// IDE-managed Components
 	TGLScene *GLScene;
 	TTimer *Timer;
 	TMainMenu *MainMenu;
-	TGLDummyCube *dc1000ly;
+	TGLDummyCube *dcGalaBlock;
 	TGLCamera *Camera;
 	TOpenTextFileDialog *OpenTextFileDialog;
 	TGLPoints *GLPoints1;
@@ -119,7 +119,7 @@ __published:	// IDE-managed Components
 	TGLPolygon *GLPolygon1;
 	TGLTetrahedron *GLTetrahedron1;
 	TGLFreeForm *DelStruct;
-	TMenuItem *Data1;
+	TMenuItem *miTable;
 	TPanel *PanelRight;
 	TCheckListBox *clbMethods;
 	TRadioGroup *ClassGroup;
@@ -142,14 +142,14 @@ __published:	// IDE-managed Components
 	TTreeView *TreeView;
 	TPanel *PanelTop;
 	TGLCadencer *GLCadencer;
-	TGLSphere *GLSphere1;
+	TGLSphere *GalaSphere;
 	TGLLightSource *GLLightSource1;
 	void __fastcall TimerTimer(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Start1Click(TObject *Sender);
 	void __fastcall clbSpectrasClickCheck(TObject *Sender);
-	void __fastcall Data1Click(TObject *Sender);
+	void __fastcall miTableClick(TObject *Sender);
 	void __fastcall ClassGroupClick(TObject *Sender);
 	void __fastcall Panel2Click(TObject *Sender);
 	void __fastcall clbMethodsClickCheck(TObject *Sender);
