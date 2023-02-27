@@ -16,6 +16,7 @@
 #include <FMX.Types3D.hpp>
 #include <System.Math.Vectors.hpp>
 #include <FMX.TreeView.hpp>
+#include <FMX.StdCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm3D
 {
@@ -31,6 +32,7 @@ __published:	// IDE-managed Components
 	TColorMaterialSource *ColorMaterialSource1;
 	TLayout *Layout1;
 	TTreeView *TreeView1;
+	TScrollBar *ScrollBar1;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

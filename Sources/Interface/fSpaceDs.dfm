@@ -34,7 +34,7 @@ object FormSpace: TFormSpace
     Top = 0
     Width = 743
     Height = 649
-    Camera = GLCamera1
+    Camera = Camera
     Buffer.BackgroundColor = clBlack
     FieldOfView = 162.481140136718800000
     PenAsTouch = False
@@ -97,8 +97,6 @@ object FormSpace: TFormSpace
         0302000000300000000000000000000000FFFFFFFFFFFFFFFF00000000000000
         0000000000010953006F006C007500740069006F006E0073001E000000000000
         0000000000FFFFFFFFFFFFFFFF0000000000000000000000000100}
-      ExplicitTop = 48
-      ExplicitHeight = 600
     end
     object Panel1: TPanel
       Left = 1
@@ -106,27 +104,69 @@ object FormSpace: TFormSpace
       Width = 183
       Height = 41
       Align = alTop
-      Caption = 'Panel1'
       TabOrder = 1
-      ExplicitLeft = 80
-      ExplicitTop = 16
-      ExplicitWidth = 217
     end
   end
-  object GLScene1: TGLScene
+  object GLScene: TGLScene
     Left = 40
     Top = 8
-    object GLCamera1: TGLCamera
-      DepthOfView = 200.000000000000000000
-      FocalLength = 50.000000000000000000
-      TargetObject = GLDummyCube1
-      Position.Coordinates = {0000004000000040000000400000803F}
+    object GLSkyBox1: TGLSkyBox
+      CloudsPlaneOffset = 0.200000002980232200
+      CloudsPlaneSize = 32.000000000000000000
     end
-    object GLDummyCube1: TGLDummyCube
+    object Camera: TGLCamera
+      DepthOfView = 20000.000000000000000000
+      FocalLength = 50.000000000000000000
+      TargetObject = dcGalablock
+      Position.Coordinates = {0080894400808944008089440000803F}
+    end
+    object dcGalablock: TGLDummyCube
       ShowAxes = True
-      CubeSize = 1.000000000000000000
+      CubeSize = 1000.000000000000000000
       VisibleAtRunTime = True
+      object boxPlane: TGLPlane
+        Material.BackProperties.Emission.Color = {938E0E3F938C0C3EDCD6D63E0000803F}
+        Material.FrontProperties.Emission.Color = {CDCC0C3FEC51B83DEC51B83D0000803F}
+        Direction.Coordinates = {000000000000803F0000000000000000}
+        Up.Coordinates = {0000000000000000000080BF00000000}
+        Height = 1000.000000000000000000
+        Width = 1000.000000000000000000
+      end
+      object circDisk: TGLDisk
+        Material.FrontProperties.Emission.Color = {A9A5253FB1A8283EB1A8283E0000803F}
+        Direction.Coordinates = {000000000000803F0000000000000000}
+        Up.Coordinates = {0000000000000000000080BF00000000}
+        Visible = False
+        OuterRadius = 866.000000000000000000
+        Slices = 64
+        SweepAngle = 360.000000000000000000
+      end
+      object circSphere: TGLSphere
+        Material.FrontProperties.Emission.Color = {0000803FF8FEFE3E000000000000803F}
+        Material.PolygonMode = pmLines
+        Visible = False
+        Radius = 866.000000000000000000
+        Slices = 64
+        Stacks = 64
+      end
+      object xyzGrid: TGLXYZGrid
+        LineColor.Color = {938C0C3E938E0E3FDCD6D63E0000803F}
+        XSamplingScale.Min = -500.000000000000000000
+        XSamplingScale.Max = 500.000000000000000000
+        XSamplingScale.Origin = -500.000000000000000000
+        XSamplingScale.Step = 100.000000000000000000
+        YSamplingScale.Min = -500.000000000000000000
+        YSamplingScale.Max = 500.000000000000000000
+        YSamplingScale.Origin = -500.000000000000000000
+        YSamplingScale.Step = 100.000000000000000000
+        ZSamplingScale.Min = -500.000000000000000000
+        ZSamplingScale.Max = 500.000000000000000000
+        ZSamplingScale.Origin = -500.000000000000000000
+        ZSamplingScale.Step = 100.000000000000000000
+        Parts = [gpX, gpY, gpZ]
+      end
       object GLLines1: TGLLines
+        Up.Coordinates = {0000803F000000000000008000000000}
         Visible = False
         NodeColor.Color = {0000803F0000803F0000803F0000803F}
         Nodes = <>
@@ -138,33 +178,14 @@ object FormSpace: TFormSpace
         Static = False
       end
       object GLPolygon1: TGLPolygon
+        Visible = False
         Nodes = <>
       end
-      object GLTetrahedron1: TGLTetrahedron
-        Material.Texture.BorderColor.Color = {9A93133FE4DB5B3FEBE0E03E0000803F}
-        Direction.Coordinates = {000000000000803F0000000000000000}
-        Position.Coordinates = {0000803F0000803F0000803F0000803F}
-        Up.Coordinates = {8B8F67BF000000004A51DABE00000000}
-        Visible = False
-      end
-      object GLFreeForm1: TGLFreeForm
+      object ffGalasphere: TGLFreeForm
         Material.FrontProperties.Diffuse.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        Material.PolygonMode = pmLines
       end
-      object GLXYZGrid1: TGLXYZGrid
-        LineColor.Color = {938C0C3E938E0E3FDCD6D63E0000803F}
-        XSamplingScale.Min = -1.000000000000000000
-        XSamplingScale.Max = 1.000000000000000000
-        XSamplingScale.Origin = -1.000000000000000000
-        XSamplingScale.Step = 0.100000001490116100
-        YSamplingScale.Min = -1.000000000000000000
-        YSamplingScale.Max = 1.000000000000000000
-        YSamplingScale.Origin = -1.000000000000000000
-        YSamplingScale.Step = 0.100000001490116100
-        ZSamplingScale.Min = -1.000000000000000000
-        ZSamplingScale.Max = 1.000000000000000000
-        ZSamplingScale.Origin = -1.000000000000000000
-        ZSamplingScale.Step = 0.100000001490116100
-        Parts = [gpX, gpY, gpZ]
+      object GLCube1: TGLCube
       end
     end
     object GLLightSource1: TGLLightSource
@@ -175,8 +196,9 @@ object FormSpace: TFormSpace
       SpotCutOff = 180.000000000000000000
     end
   end
-  object GLCadencer1: TGLCadencer
-    Scene = GLScene1
+  object GLCadencer: TGLCadencer
+    Scene = GLScene
+    OnProgress = GLCadencerProgress
     Left = 40
     Top = 112
   end

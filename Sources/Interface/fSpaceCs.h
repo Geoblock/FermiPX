@@ -143,7 +143,7 @@ __published:	// IDE-managed Components
 	TPanel *PanelTop;
 	TGLCadencer *GLCadencer;
 	TGLSphere *GalaSphere;
-	TGLLightSource *GLLightSource1;
+	TGLLightSource *LightSource;
 	void __fastcall TimerTimer(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall FormCreate(TObject *Sender);

@@ -74,4 +74,11 @@ object Form1: TForm1
     Left = 808
     Top = 440
   end
+  object ScrollBar1: TScrollBar
+    SmallChange = 0.000000000000000000
+    Orientation = Horizontal
+    Position.X = 656.000000000000000000
+    Position.Y = 248.000000000000000000
+    TabOrder = 12
+  end
 end

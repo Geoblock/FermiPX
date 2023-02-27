@@ -32,12 +32,15 @@ uses
   Data.DB,
   FireDAC.Comp.DataSet,
   FireDAC.Comp.Client,
+  FireDAC.Phys.SQLiteWrapper.Stat,
+
   Vcl.ExtDlgs,
   Vcl.Menus,
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   Vcl.CheckLst,
   Vcl.ComCtrls,
+  Vcl.Imaging.jpeg,
 
   GLS.Cadencer,
   GLS.Scene,
@@ -51,10 +54,11 @@ uses
   GLS.Color,
   GLS.Graph,
   GLS.SimpleNavigation,
-  FireDAC.Phys.SQLiteWrapper.Stat,
+  GLS.FileJPEG,
 
   fOptionsDs,
-  fAboutDs;
+  fAboutDs,
+  GLS.SkyDome;
 
 
 type
@@ -89,16 +93,15 @@ type
     GLSceneViewer1: TGLSceneViewer;
     PanelRight: TPanel;
     CheckListBox1: TCheckListBox;
-    GLScene1: TGLScene;
-    GLCamera1: TGLCamera;
-    GLDummyCube1: TGLDummyCube;
+    GLScene: TGLScene;
+    Camera: TGLCamera;
+    dcGalablock: TGLDummyCube;
     GLLines1: TGLLines;
     GLPoints1: TGLPoints;
     GLPolygon1: TGLPolygon;
-    GLTetrahedron1: TGLTetrahedron;
-    GLFreeForm1: TGLFreeForm;
+    ffGalasphere: TGLFreeForm;
     GLLightSource1: TGLLightSource;
-    GLCadencer1: TGLCadencer;
+    GLCadencer: TGLCadencer;
     Timer1: TTimer;
     MainMenu1: TMainMenu;
     miFile: TMenuItem;
@@ -112,7 +115,7 @@ type
     FDQuery1: TFDQuery;
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
     GLSimpleNavigation1: TGLSimpleNavigation;
-    GLXYZGrid1: TGLXYZGrid;
+    xyzGrid: TGLXYZGrid;
     miTools: TMenuItem;
     miHelp: TMenuItem;
     miAbout: TMenuItem;
@@ -123,13 +126,21 @@ type
     N2: TMenuItem;
     miExit: TMenuItem;
     Panel1: TPanel;
+    GLCube1: TGLCube;
+    circSphere: TGLSphere;
+    circDisk: TGLDisk;
+    GLSkyBox1: TGLSkyBox;
+    boxPlane: TGLPlane;
     procedure FormCreate(Sender: TObject);
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure miOptionsClick(Sender: TObject);
     procedure miAboutClick(Sender: TObject);
     procedure miExitClick(Sender: TObject);
+    procedure GLCadencerProgress(Sender: TObject; const DeltaTime, NewTime: Double);
   private
+    PathToData: TFileName;
+    function GetDataDir(): TFileName;
   public
   end;
 
@@ -167,14 +178,38 @@ float yellow[3] = {1, 1, 0.003};
 float orange[3] = {1, 0.4, 0};
 float red[3] = {0.992, 0, 0.003};
 *)
-  prefix: String = '.\..\..\DATA\';
+  prefix: string = '.\..\..\DATA\';
 
+//-----------------------------------------------
 implementation
 
 {$R *.dfm}
 
+function TFormSpace.GetDataDir(): TFileName;
+var
+  path: TFileName;
+begin
+  path := LowerCase(ExtractFilePath(ParamStr(0)));
+  Delete(path, Pos('bin', path), Length(path));
+  path := IncludeTrailingPathDelimiter(path) + 'data';
+  SetCurrentDir(path);
+  Result := path;
+end;
+
+//-----------------------------------------------
+
 procedure TFormSpace.FormCreate(Sender: TObject);
 begin
+  PathToData := GetDataDir() + '\image';
+  SetCurrentDir(PathToData);
+
+  circDisk.Material.Texture.Disabled := False;
+  circDisk.Material.Texture.Image.LoadFromFile('galaxy.jpg');
+
+  boxPlane.Material.Texture.Disabled := False;
+  boxPlane.Material.Texture.Image.LoadFromFile('galaxy.jpg');
+
+
 	miPoints.Checked := True;
  //	Form1.Caption := 'HYG 3D | Points mode';
 
@@ -182,6 +217,12 @@ begin
 	miData.Enabled := False;
 
 	CheckListBox1.Checked[0] := True;
+end;
+
+procedure TFormSpace.GLCadencerProgress(Sender: TObject; const DeltaTime, NewTime: Double);
+begin
+  dcGalablock.TurnAngle := dcGalablock.TurnAngle - deltaTime * 10; // timeMultiplier / 29.5;
+
 end;
 
 procedure TFormSpace.GLSceneViewer1MouseDown(Sender: TObject;
