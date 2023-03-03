@@ -12,17 +12,21 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls;
 
 type
   TfrmOptions = class(TForm)
-    PageControl: TPageControl;
+    pgOptions: TPageControl;
     tsInterface: TTabSheet;
     tsStars: TTabSheet;
     tsScenario: TTabSheet;
     tvOptions: TTreeView;
     tsGalablocks: TTabSheet;
     tsCoordinates: TTabSheet;
+    tsGeneral: TTabSheet;
+    rgUnits: TRadioGroup;
   private
   public
   end;

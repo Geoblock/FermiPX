@@ -55,10 +55,11 @@ uses
   GLS.Graph,
   GLS.SimpleNavigation,
   GLS.FileJPEG,
+  GLS.SkyDome,
 
   fOptionsDs,
   fAboutDs,
-  GLS.SkyDome;
+  fPathDs;
 
 
 type
@@ -131,6 +132,7 @@ type
     circDisk: TGLDisk;
     GLSkyBox1: TGLSkyBox;
     boxPlane: TGLPlane;
+    miPath: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -138,6 +140,7 @@ type
     procedure miAboutClick(Sender: TObject);
     procedure miExitClick(Sender: TObject);
     procedure GLCadencerProgress(Sender: TObject; const DeltaTime, NewTime: Double);
+    procedure miPathClick(Sender: TObject);
   private
     PathToData: TFileName;
     function GetDataDir(): TFileName;
@@ -239,6 +242,16 @@ end;
 procedure TFormSpace.miOptionsClick(Sender: TObject);
 begin
   with TfrmOptions.Create(Self) do
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+end;
+
+procedure TFormSpace.miPathClick(Sender: TObject);
+begin
+  with TfrmPath.Create(Self) do
     try
       ShowModal;
     finally

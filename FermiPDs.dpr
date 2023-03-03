@@ -7,7 +7,8 @@ uses
   uRandomAM in 'Sources\Code\uRandomAM.pas',
   fOptionsDs in 'Sources\Interface\fOptionsDs.pas' {frmOptions},
   fAboutDs in 'Sources\Interface\fAboutDs.pas' {frmAbout},
-  uExecApps in 'Sources\Code\uExecApps.pas';
+  uExecApps in 'Sources\Code\uExecApps.pas',
+  fPathDs in 'Sources\Interface\fPathDs.pas' {frmPath};
 
 {$R *.res}
 

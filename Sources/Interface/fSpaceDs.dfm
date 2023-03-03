@@ -35,7 +35,7 @@ object FormSpace: TFormSpace
     Width = 743
     Height = 649
     Camera = Camera
-    Buffer.BackgroundColor = clBlack
+    Buffer.BackgroundColor = clTeal
     FieldOfView = 162.481140136718800000
     PenAsTouch = False
     Align = alClient
@@ -150,7 +150,6 @@ object FormSpace: TFormSpace
         Stacks = 64
       end
       object xyzGrid: TGLXYZGrid
-        LineColor.Color = {938C0C3E938E0E3FDCD6D63E0000803F}
         XSamplingScale.Min = -500.000000000000000000
         XSamplingScale.Max = 500.000000000000000000
         XSamplingScale.Origin = -500.000000000000000000
@@ -223,7 +222,7 @@ object FormSpace: TFormSpace
       end
     end
     object miModeling: TMenuItem
-      Caption = 'Mode'
+      Caption = 'Modeling'
       object miPoints: TMenuItem
         Caption = 'Points'
         RadioItem = True
@@ -245,6 +244,10 @@ object FormSpace: TFormSpace
       object miOptions: TMenuItem
         Caption = 'Options...'
         OnClick = miOptionsClick
+      end
+      object miPath: TMenuItem
+        Caption = 'Path...'
+        OnClick = miPathClick
       end
     end
     object miHelp: TMenuItem

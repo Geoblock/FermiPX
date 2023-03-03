@@ -145,6 +145,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Sources\Code\uExecApps.pas"/>
+        <DCCReference Include="Sources\Interface\fPathDs.pas">
+            <Form>frmPath</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -173,7 +177,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\FermiPDs.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Bin\FermiPDs.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>FermiPDs.exe</RemoteName>
                         <Overwrite>true</Overwrite>

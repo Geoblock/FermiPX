@@ -12,6 +12,8 @@ object FormFermi: TFormFermi
   DesignerMasterStyle = 0
   object Camera1: TCamera
     AngleOfView = 45.000000000000000000
+    Position.X = 3.243829250335693000
+    Position.Y = -2.627434730529785000
     Position.Z = -5.000000000000000000
     Width = 1.000000000000000000
     Height = 1.000000000000000000
@@ -21,26 +23,29 @@ object FormFermi: TFormFermi
     Color = claWhite
     LightType = Directional
     SpotCutOff = 180.000000000000000000
+    Position.X = -4.772294044494629000
+    Position.Y = 4.518196582794189000
     Width = 1.000000000000000000
     Height = 1.000000000000000000
     Depth = 1.000000000000000000
   end
   object Dummy1: TDummy
-    Width = 1.000000000000000000
-    Height = 1.000000000000000000
-    Depth = 1.000000000000000000
-  end
-  object ProxyObject1: TProxyObject
+    Position.X = -4.252404689788818000
+    Position.Y = 3.483374118804932000
     Width = 1.000000000000000000
     Height = 1.000000000000000000
     Depth = 1.000000000000000000
   end
   object Plane1: TPlane
+    Position.X = -6.331523418426514000
+    Position.Y = -4.284901142120361000
     Width = 1.000000000000000000
     Height = 1.000000000000000000
     Depth = 0.001000000047497451
   end
   object Disk1: TDisk
+    Position.X = -0.518209934234619100
+    Position.Y = -0.751021862030029300
     Width = 1.000000000000000000
     Height = 0.001000000047497451
     Depth = 1.000000000000000000
@@ -52,28 +57,29 @@ object FormFermi: TFormFermi
     Depth = 1.000000000000000000
   end
   object Sphere1: TSphere
+    Position.X = 0.734636664390564000
+    Position.Y = -3.231485843658447000
     Width = 1.000000000000000000
     Height = 1.000000000000000000
     Depth = 1.000000000000000000
   end
   object Cylinder1: TCylinder
+    Position.X = -1.391755819320679000
+    Position.Y = -3.520393848419189000
     Width = 1.000000000000000000
     Height = 1.000000000000000000
     Depth = 1.000000000000000000
   end
   object Cone1: TCone
+    Position.X = -0.409650951623916600
+    Position.Y = 4.204585075378418000
     Width = 1.000000000000000000
     Height = 1.000000000000000000
     Depth = 1.000000000000000000
   end
-  object Text3D1: TText3D
-    Width = 3.000000000000000000
-    Height = 2.000000000000000000
-    Depth = 0.300000011920929000
-    Flatness = 1.000000000000000000
-    Sides = [Front, Back, Shaft]
-  end
   object Path3D1: TPath3D
+    Position.X = -3.939515590667725000
+    Position.Y = -3.689341068267822000
     Width = 4.000000000000000000
     Height = 4.000000000000000000
     Depth = 1.000000000000000000
@@ -87,6 +93,8 @@ object FormFermi: TFormFermi
     Data = {0000}
   end
   object Rectangle3D1: TRectangle3D
+    Position.X = 4.985319614410400000
+    Position.Y = 4.290157318115234000
     Width = 4.000000000000000000
     Height = 4.000000000000000000
     Depth = 1.000000000000000000
@@ -95,15 +103,13 @@ object FormFermi: TFormFermi
     Sides = [Front, Back, Shaft]
   end
   object Ellipse3D1: TEllipse3D
+    Position.X = -6.117091655731201000
+    Position.Y = 0.424227714538574200
     Width = 4.000000000000000000
     Height = 4.000000000000000000
     Depth = 1.000000000000000000
     Flatness = 1.000000000000000000
     Sides = [Front, Back, Shaft]
-  end
-  object Layout3D1: TLayout3D
-    Height = 4.000000000000000000
-    Width = 5.000000000000000000
   end
   object ColorMaterialSource1: TColorMaterialSource
     Color = claRed
