@@ -27,6 +27,8 @@ type
     tsCoordinates: TTabSheet;
     tsGeneral: TTabSheet;
     rgUnits: TRadioGroup;
+    tsPath: TTabSheet;
+    procedure FormCreate(Sender: TObject);
   private
   public
   end;
@@ -36,6 +38,26 @@ var
 
 implementation
 
+uses
+  fPathDs;
+
 {$R *.dfm}
+
+procedure TfrmOptions.FormCreate(Sender: TObject);
+begin
+  frmPath := TfrmPath.Create(tsPath);
+  with frmPath do
+  begin
+    Name := 'FormPath';
+    Top := 10;
+    Left := 10;
+    Parent := tsPath;
+    Align := alClient;
+    BorderStyle := bsNone;
+    BorderIcons := [];
+    Show;
+  end;
+end;
+
 
 end.

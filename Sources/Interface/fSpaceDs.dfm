@@ -1,7 +1,7 @@
 object FormSpace: TFormSpace
   Left = 0
   Top = 0
-  Caption = 'Fermi Paradox Solutions'
+  Caption = 'Fermi Paradox Simulator'
   ClientHeight = 668
   ClientWidth = 1066
   Color = clBtnFace
@@ -244,10 +244,6 @@ object FormSpace: TFormSpace
       object miOptions: TMenuItem
         Caption = 'Options...'
         OnClick = miOptionsClick
-      end
-      object miPath: TMenuItem
-        Caption = 'Path...'
-        OnClick = miPathClick
       end
     end
     object miHelp: TMenuItem

@@ -28,19 +28,15 @@ type
     Label3: TLabel;
     SearchBoxA: TSearchBox;
     trbVelocity: TTrackBar;
-    LabelLightYears: TLabel;
-    LabelC: TLabel;
     LabelFlightTime: TLabel;
-    LabelYears: TLabel;
     stFlightTime: TStaticText;
     SearchBoxB: TSearchBox;
     EditDistance: TEdit;
+    stVelocity: TStaticText;
     procedure trbVelocityChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    { Private declarations }
   public
-    { Public declarations }
   end;
 
 var
@@ -59,16 +55,15 @@ end;
 
 procedure TfrmPath.trbVelocityChange(Sender: TObject);
 var
-  DistanceInYears, DistanceInSeconds, Velocity: Single;
-  Distance: Extended;
+  DistanceInYears: Single;
+  Ratio, FlightTime: Extended;
 begin
+  stVelocity.Caption := IntToStr(trbVelocity.Position);
   DistanceInYears := StrToFloat(EditDistance.Text);
-  Velocity := trbVelocity.Position;
-  DistanceInSeconds := DistanceInYears*365*86400;
-  Distance := DistanceInSeconds/Velocity;
+  Ratio := trbVelocity.Position/299792;
+  FlightTime := DistanceInYears/Ratio;
 
-  stFlightTime.Caption := FloatToStrF(Distance, ffFixed, 20, 1);
-
+  stFlightTime.Caption := FloatToStrF(FlightTime, ffFixed, 20, 1);
 end;
 
 end.

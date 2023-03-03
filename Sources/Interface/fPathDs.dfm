@@ -1,6 +1,7 @@
 object frmPath: TfrmPath
   Left = 0
   Top = 0
+  AutoSize = True
   Caption = 'Path'
   ClientHeight = 329
   ClientWidth = 496
@@ -20,8 +21,6 @@ object frmPath: TfrmPath
     Height = 329
     Align = alClient
     TabOrder = 0
-    ExplicitTop = -8
-    ExplicitWidth = 511
     object LabelA: TLabel
       Left = 88
       Top = 9
@@ -37,48 +36,25 @@ object frmPath: TfrmPath
       Caption = 'Star B'
     end
     object Label2: TLabel
-      Left = 88
+      Left = 94
       Top = 168
-      Width = 45
+      Width = 60
       Height = 15
-      Caption = 'Distance'
+      Caption = 'Distance, ly'
     end
     object Label3: TLabel
-      Left = 89
+      Left = 94
       Top = 216
-      Width = 41
+      Width = 86
       Height = 15
-      Caption = 'Velocity'
-    end
-    object LabelLightYears: TLabel
-      Left = 334
-      Top = 168
-      Width = 76
-      Height = 15
-      AutoSize = False
-      Caption = 'Light Years'
-    end
-    object LabelC: TLabel
-      Left = 334
-      Top = 216
-      Width = 28
-      Height = 24
-      AutoSize = False
-      Caption = 'C'
+      Caption = 'Velocity, km/sec'
     end
     object LabelFlightTime: TLabel
-      Left = 88
+      Left = 94
       Top = 262
-      Width = 59
+      Width = 90
       Height = 15
-      Caption = 'Flight Time'
-    end
-    object LabelYears: TLabel
-      Left = 334
-      Top = 266
-      Width = 27
-      Height = 15
-      Caption = 'Years'
+      Caption = 'Flight time, years'
     end
     object chbRoute: TCheckBox
       Left = 168
@@ -107,18 +83,18 @@ object frmPath: TfrmPath
       Text = 'Sol'
     end
     object trbVelocity: TTrackBar
-      Left = 161
+      Left = 186
       Top = 211
       Width = 167
       Height = 29
       Max = 299792
-      Min = 1
+      Min = 100
       Position = 30000
       TabOrder = 3
       OnChange = trbVelocityChange
     end
     object stFlightTime: TStaticText
-      Left = 168
+      Left = 193
       Top = 262
       Width = 150
       Height = 19
@@ -139,13 +115,21 @@ object frmPath: TfrmPath
       Text = 'TOI-700'
     end
     object EditDistance: TEdit
-      Left = 168
+      Left = 193
       Top = 165
       Width = 150
       Height = 23
       Alignment = taCenter
       TabOrder = 6
       Text = '101.4'
+    end
+    object stVelocity: TStaticText
+      Left = 359
+      Top = 216
+      Width = 46
+      Height = 19
+      Caption = 'Velocity'
+      TabOrder = 7
     end
   end
 end
