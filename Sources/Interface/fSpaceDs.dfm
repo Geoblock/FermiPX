@@ -129,6 +129,7 @@ object FormSpace: TFormSpace
         Material.FrontProperties.Emission.Color = {CDCC0C3FEC51B83DEC51B83D0000803F}
         Direction.Coordinates = {000000000000803F0000000000000000}
         Up.Coordinates = {0000000000000000000080BF00000000}
+        Visible = False
         Height = 1000.000000000000000000
         Width = 1000.000000000000000000
       end
@@ -136,8 +137,8 @@ object FormSpace: TFormSpace
         Material.FrontProperties.Emission.Color = {A9A5253FB1A8283EB1A8283E0000803F}
         Direction.Coordinates = {000000000000803F0000000000000000}
         Up.Coordinates = {0000000000000000000080BF00000000}
-        Visible = False
-        OuterRadius = 866.000000000000000000
+        InnerRadius = 200.000000000000000000
+        OuterRadius = 566.000000000000000000
         Slices = 64
         SweepAngle = 360.000000000000000000
       end
@@ -150,6 +151,7 @@ object FormSpace: TFormSpace
         Stacks = 64
       end
       object xyzGrid: TGLXYZGrid
+        Visible = False
         XSamplingScale.Min = -500.000000000000000000
         XSamplingScale.Max = 500.000000000000000000
         XSamplingScale.Origin = -500.000000000000000000
@@ -245,9 +247,22 @@ object FormSpace: TFormSpace
         Caption = 'Options...'
         OnClick = miOptionsClick
       end
+      object miSettings: TMenuItem
+        Caption = 'Settings...'
+        OnClick = miSettingsClick
+      end
     end
     object miHelp: TMenuItem
       Caption = 'Help'
+      object Content1: TMenuItem
+        Caption = 'Content...'
+      end
+      object miOpenGL: TMenuItem
+        Caption = 'OpenGL Info...'
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
       object miAbout: TMenuItem
         Caption = 'About...'
         OnClick = miAboutClick

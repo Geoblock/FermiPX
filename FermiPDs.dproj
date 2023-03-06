@@ -149,6 +149,11 @@
             <Form>frmPath</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Sources\Code\uFindPaths.pas"/>
+        <DCCReference Include="Sources\Interface\fSettingDs.pas">
+            <Form>frmSettings</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

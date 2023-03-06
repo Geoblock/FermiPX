@@ -28,21 +28,21 @@ object frmPath: TfrmPath
       Height = 15
       Caption = 'Star A'
     end
-    object Label1: TLabel
+    object LabelB: TLabel
       Left = 363
       Top = 9
       Width = 30
       Height = 15
       Caption = 'Star B'
     end
-    object Label2: TLabel
+    object LabelDistance: TLabel
       Left = 94
       Top = 168
       Width = 60
       Height = 15
       Caption = 'Distance, ly'
     end
-    object Label3: TLabel
+    object LabelVelocity: TLabel
       Left = 94
       Top = 216
       Width = 86
@@ -56,22 +56,6 @@ object frmPath: TfrmPath
       Height = 15
       Caption = 'Flight time, years'
     end
-    object chbRoute: TCheckBox
-      Left = 168
-      Top = 81
-      Width = 185
-      Height = 17
-      Caption = 'Route on Delaunay Tetramesh'
-      TabOrder = 0
-    end
-    object CheckBox2: TCheckBox
-      Left = 168
-      Top = 113
-      Width = 177
-      Height = 17
-      Caption = 'Avoid Hazard Voronoi Cells'
-      TabOrder = 1
-    end
     object SearchBoxA: TSearchBox
       Left = 56
       Top = 30
@@ -79,7 +63,7 @@ object frmPath: TfrmPath
       Height = 23
       Alignment = taCenter
       AutoSize = False
-      TabOrder = 2
+      TabOrder = 0
       Text = 'Sol'
     end
     object trbVelocity: TTrackBar
@@ -90,7 +74,7 @@ object frmPath: TfrmPath
       Max = 299792
       Min = 100
       Position = 30000
-      TabOrder = 3
+      TabOrder = 1
       OnChange = trbVelocityChange
     end
     object stFlightTime: TStaticText
@@ -102,7 +86,7 @@ object frmPath: TfrmPath
       AutoSize = False
       BorderStyle = sbsSunken
       Caption = '100000'
-      TabOrder = 4
+      TabOrder = 2
     end
     object SearchBoxB: TSearchBox
       Left = 312
@@ -111,7 +95,7 @@ object frmPath: TfrmPath
       Height = 23
       Alignment = taCenter
       AutoSize = False
-      TabOrder = 5
+      TabOrder = 3
       Text = 'TOI-700'
     end
     object EditDistance: TEdit
@@ -120,15 +104,48 @@ object frmPath: TfrmPath
       Width = 150
       Height = 23
       Alignment = taCenter
-      TabOrder = 6
+      TabOrder = 4
       Text = '101.4'
     end
-    object stVelocity: TStaticText
+    object stTrackBar: TStaticText
       Left = 359
       Top = 216
-      Width = 46
+      Width = 49
       Height = 19
-      Caption = 'Velocity'
+      Caption = 'TrackBar'
+      TabOrder = 5
+    end
+    object gbFindPath: TGroupBox
+      Left = 72
+      Top = 73
+      Width = 359
+      Height = 72
+      Caption = 'Find Path'
+      TabOrder = 6
+      object chbOnTetramesh: TCheckBox
+        Left = 102
+        Top = 21
+        Width = 211
+        Height = 17
+        Caption = 'On Delaunay Tetramesh'
+        TabOrder = 0
+      end
+      object chbAvoidHazards: TCheckBox
+        Left = 102
+        Top = 44
+        Width = 209
+        Height = 17
+        Caption = 'Avoiding Voronet Hazard Cells '
+        TabOrder = 1
+      end
+    end
+    object Button1: TButton
+      Left = 400
+      Top = 258
+      Width = 75
+      Height = 25
+      Caption = 'Find'
+      ModalResult = 1
       TabOrder = 7
     end
   end

@@ -39,7 +39,8 @@ var
 implementation
 
 uses
-  fPathDs;
+  fPathDs,
+  uFindPaths;
 
 {$R *.dfm}
 
@@ -57,6 +58,8 @@ begin
     BorderIcons := [];
     Show;
   end;
+  if frmPath.chbOnTetramesh.Checked then
+    FindPathOnTetraMesh(frmPath.SearchBoxA.Text, frmPath.SearchBoxB.Text);
 end;
 
 

@@ -11,12 +11,14 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
-  Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 
 type
   TfrmAbout = class(TForm)
     Memo1: TMemo;
+    Panel1: TPanel;
+    Button1: TButton;
   private
     { Private declarations }
   public

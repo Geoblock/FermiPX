@@ -57,6 +57,7 @@ uses
   GLS.FileJPEG,
   GLS.SkyDome,
 
+  fSettingDs,
   fOptionsDs,
   fAboutDs,
   fPathDs;
@@ -132,6 +133,10 @@ type
     circDisk: TGLDisk;
     GLSkyBox1: TGLSkyBox;
     boxPlane: TGLPlane;
+    miOpenGL: TMenuItem;
+    Content1: TMenuItem;
+    N1: TMenuItem;
+    miSettings: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -139,6 +144,7 @@ type
     procedure miAboutClick(Sender: TObject);
     procedure miExitClick(Sender: TObject);
     procedure GLCadencerProgress(Sender: TObject; const DeltaTime, NewTime: Double);
+    procedure miSettingsClick(Sender: TObject);
   private
     PathToData: TFileName;
     function GetDataDir(): TFileName;
@@ -222,7 +228,7 @@ end;
 
 procedure TFormSpace.GLCadencerProgress(Sender: TObject; const DeltaTime, NewTime: Double);
 begin
-  dcGalablock.TurnAngle := dcGalablock.TurnAngle - deltaTime * 10; // timeMultiplier / 29.5;
+///  dcGalablock.TurnAngle := dcGalablock.TurnAngle - deltaTime * 10; // timeMultiplier / 29.5;
 
 end;
 
@@ -240,6 +246,16 @@ end;
 procedure TFormSpace.miOptionsClick(Sender: TObject);
 begin
   with TfrmOptions.Create(Self) do
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+end;
+
+procedure TFormSpace.miSettingsClick(Sender: TObject);
+begin
+    with TfrmSettings.Create(Self) do
     try
       ShowModal;
     finally

@@ -2,7 +2,6 @@ echo off
 del *.exe /s  
 del *.scr /s
 del *.dcu /s 
-rem del *.res /s  !!!!!
 del *.ddp /s
 del *.ppu /s
 del *.o /s
@@ -18,7 +17,6 @@ del *.a /s
 del *.map /s
 del *.rsm /s
 del *.drc /s
-del *.2007 /s
 del *.local /s
 
 rem delete more files
@@ -49,8 +47,6 @@ del *.vlb /s
 
 del *.user /s
 
-echo delete all .svn directories with subdirectories and files 
-for /r %1 %%R in (.svn) do if exist "%%R" (rd /s /q "%%R")
 echo---------------------------------------------------------
 echo delete debug and Platform directories with all subdirectories and files 
 for /r %1 %%R in (Win32) do if exist "%%R" (rd /s /q "%%R")

@@ -20,19 +20,21 @@ uses
 type
   TfrmPath = class(TForm)
     PanelTitle: TPanel;
-    chbRoute: TCheckBox;
-    CheckBox2: TCheckBox;
     LabelA: TLabel;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
+    LabelB: TLabel;
+    LabelDistance: TLabel;
+    LabelVelocity: TLabel;
     SearchBoxA: TSearchBox;
     trbVelocity: TTrackBar;
     LabelFlightTime: TLabel;
     stFlightTime: TStaticText;
     SearchBoxB: TSearchBox;
     EditDistance: TEdit;
-    stVelocity: TStaticText;
+    stTrackBar: TStaticText;
+    gbFindPath: TGroupBox;
+    chbOnTetramesh: TCheckBox;
+    chbAvoidHazards: TCheckBox;
+    Button1: TButton;
     procedure trbVelocityChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -58,7 +60,7 @@ var
   DistanceInYears: Single;
   Ratio, FlightTime: Extended;
 begin
-  stVelocity.Caption := IntToStr(trbVelocity.Position);
+  stTrackBar.Caption := IntToStr(trbVelocity.Position);
   DistanceInYears := StrToFloat(EditDistance.Text);
   Ratio := trbVelocity.Position/299792;
   FlightTime := DistanceInYears/Ratio;
