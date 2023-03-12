@@ -38,9 +38,9 @@ object frmSettings: TfrmSettings
   end
   object PanelMiddle: TPanel
     Left = 0
-    Top = 13
+    Top = 9
     Width = 835
-    Height = 501
+    Height = 505
     Align = alClient
     BevelOuter = bvNone
     BorderWidth = 5
@@ -49,8 +49,8 @@ object frmSettings: TfrmSettings
       Left = 169
       Top = 5
       Width = 661
-      Height = 491
-      ActivePage = tsInterface
+      Height = 495
+      ActivePage = tsMaterial
       Align = alClient
       Style = tsButtons
       TabOrder = 0
@@ -295,6 +295,9 @@ object frmSettings: TfrmSettings
         Caption = 'Material'
         ImageIndex = 4
         TabVisible = False
+        DesignSize = (
+          653
+          485)
         object ListView: TListView
           Left = 0
           Top = 0
@@ -327,6 +330,30 @@ object frmSettings: TfrmSettings
           Height = 24
           Caption = 'Modify...'
           TabOrder = 1
+        end
+        object chlbStarClasses: TCheckListBox
+          Left = 472
+          Top = 273
+          Width = 104
+          Height = 113
+          Anchors = [akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 15
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Items.Strings = (
+            '"O"'
+            '"A"'
+            '"B"'
+            '"F"'
+            '"G"'
+            '"K"'
+            '"M"')
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = False
+          TabOrder = 2
         end
       end
       object tsGalaxy: TTabSheet
@@ -363,17 +390,17 @@ object frmSettings: TfrmSettings
         ImageIndex = 5
         TabVisible = False
         object ColorGrid1: TColorGrid
-          Left = 368
-          Top = 56
+          Left = 440
+          Top = 192
           Width = 100
           Height = 100
           TabOrder = 0
         end
         object DirectoryOutline1: TDirectoryOutline
-          Left = 80
-          Top = 56
-          Width = 121
-          Height = 97
+          Left = 32
+          Top = -5
+          Width = 289
+          Height = 493
           ItemHeight = 14
           Options = [ooDrawFocusRect]
           PictureClosed.Data = {
@@ -469,20 +496,29 @@ object frmSettings: TfrmSettings
         ImageIndex = 6
         TabVisible = False
         object ListBox1: TListBox
-          Left = 112
-          Top = 88
-          Width = 121
-          Height = 97
+          Left = 32
+          Top = 64
+          Width = 202
+          Height = 337
           ItemHeight = 15
           TabOrder = 0
         end
         object ComboBox1: TComboBox
-          Left = 320
-          Top = 112
+          Left = 360
+          Top = 272
           Width = 145
           Height = 23
           TabOrder = 1
           Text = 'ComboBox1'
+        end
+        object Memo1: TMemo
+          Left = 336
+          Top = 121
+          Width = 185
+          Height = 89
+          Lines.Strings = (
+            'Memo1')
+          TabOrder = 2
         end
       end
     end
@@ -490,7 +526,7 @@ object frmSettings: TfrmSettings
       Left = 5
       Top = 5
       Width = 164
-      Height = 491
+      Height = 495
       Align = alLeft
       AutoExpand = True
       HotTrack = True
@@ -504,19 +540,20 @@ object frmSettings: TfrmSettings
         0000000000FFFFFFFFFFFFFFFF02000000000000000000000001074400690073
         0070006C0061007900260000000000000000000000FFFFFFFFFFFFFFFF030000
         000000000000000000010444006100740061002E0000000000000000000000FF
-        FFFFFFFFFFFFFF04000000000000000000000001084D00610074006500720069
-        0061006C002A0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
-        00000000000106470061006C00610078007900280000000000000000000000FF
-        FFFFFFFFFFFFFF0000000000000000000000000105530074006100720073002C
-        0000000000000000000000FFFFFFFFFFFFFFFF00000000000000000000000001
-        0750006C0061006E00650074007300}
+        FFFFFFFFFFFFFF04000000000000000100000001084D00610074006500720069
+        0061006C002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+        0000000000010753006800610064006500720073002A00000000000000000000
+        00FFFFFFFFFFFFFFFF0000000000000000000000000106470061006C00610078
+        007900280000000000000000000000FFFFFFFFFFFFFFFF000000000000000000
+        0000000105530074006100720073002C0000000000000000000000FFFFFFFFFF
+        FFFFFF000000000000000000000000010750006C0061006E00650074007300}
     end
   end
   object PanelTop: TPanel
     Left = 0
     Top = 0
     Width = 835
-    Height = 13
+    Height = 9
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2

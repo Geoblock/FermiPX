@@ -22,7 +22,7 @@ uses
   Vcl.Outline,
   Vcl.Samples.DirOutln,
   Vcl.ColorGrd,
-  Vcl.Samples.Gauges;
+  Vcl.Samples.Gauges, Vcl.CheckLst;
 
 type
   TfrmSettings = class(TForm)
@@ -73,6 +73,8 @@ type
     ListBox1: TListBox;
     ComboBox1: TComboBox;
     rgLanguage: TRadioGroup;
+    Memo1: TMemo;
+    chlbStarClasses: TCheckListBox;
     procedure TreeViewClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -94,7 +96,14 @@ implementation
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
-//
+  // Default classes for terrain planets
+	chlbStarClasses.Checked[0] := False;
+ 	chlbStarClasses.Checked[1] := False;
+ 	chlbStarClasses.Checked[2] := False;
+	chlbStarClasses.Checked[3] := True;
+ 	chlbStarClasses.Checked[4] := True;
+ 	chlbStarClasses.Checked[5] := True;
+ 	chlbStarClasses.Checked[6] := True;
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);

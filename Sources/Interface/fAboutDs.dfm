@@ -25,6 +25,7 @@ object frmAbout: TfrmAbout
       'Lev Koptyaev'
       '')
     TabOrder = 0
+    Visible = False
   end
   object Panel1: TPanel
     Left = 0
@@ -34,9 +35,6 @@ object frmAbout: TfrmAbout
     Align = alTop
     Caption = 'Fermi Paradox Simulator v.0.1'
     TabOrder = 1
-    ExplicitLeft = 152
-    ExplicitTop = 8
-    ExplicitWidth = 185
   end
   object Button1: TButton
     Left = 208

@@ -60,7 +60,7 @@ uses
   fSettingDs,
   fOptionsDs,
   fAboutDs,
-  fPathDs;
+  fPathDs, Vcl.ToolWin;
 
 
 type
@@ -94,15 +94,14 @@ type
     StatusBar1: TStatusBar;
     GLSceneViewer1: TGLSceneViewer;
     PanelRight: TPanel;
-    CheckListBox1: TCheckListBox;
     GLScene: TGLScene;
     Camera: TGLCamera;
     dcGalablock: TGLDummyCube;
     GLLines1: TGLLines;
     GLPoints1: TGLPoints;
     GLPolygon1: TGLPolygon;
-    ffGalasphere: TGLFreeForm;
-    GLLightSource1: TGLLightSource;
+    ffSolSphere: TGLFreeForm;
+    LightSource1: TGLLightSource;
     GLCadencer: TGLCadencer;
     Timer1: TTimer;
     MainMenu1: TMainMenu;
@@ -123,20 +122,36 @@ type
     miAbout: TMenuItem;
     miOptions: TMenuItem;
     PanelLeft: TPanel;
-    TreeView1: TTreeView;
     miOpen: TMenuItem;
     N2: TMenuItem;
     miExit: TMenuItem;
-    Panel1: TPanel;
-    GLCube1: TGLCube;
+    PanelTop: TPanel;
+    SolCube: TGLCube;
     circSphere: TGLSphere;
     circDisk: TGLDisk;
-    GLSkyBox1: TGLSkyBox;
+    SkyBox: TGLSkyBox;
     boxPlane: TGLPlane;
     miOpenGL: TMenuItem;
     Content1: TMenuItem;
     N1: TMenuItem;
     miSettings: TMenuItem;
+    Torus: TGLTorus;
+    LightSource2: TGLLightSource;
+    HeightField: TGLHeightField;
+    YZGrid: TGLXYZGrid;
+    XZGrid: TGLXYZGrid;
+    XYGrid: TGLXYZGrid;
+    ControlBar1: TControlBar;
+    ToolBar1: TToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    PanelBottom: TPanel;
+    PageControl1: TPageControl;
+    tsDatasets: TTabSheet;
+    tsModeling: TTabSheet;
+    tvDatasets: TTreeView;
+    tvModeling: TTreeView;
     procedure FormCreate(Sender: TObject);
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -223,7 +238,6 @@ begin
 	miModeling.Enabled := False;
 	miData.Enabled := False;
 
-	CheckListBox1.Checked[0] := True;
 end;
 
 procedure TFormSpace.GLCadencerProgress(Sender: TObject; const DeltaTime, NewTime: Double);
