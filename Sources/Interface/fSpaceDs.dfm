@@ -28,8 +28,6 @@ object FormSpace: TFormSpace
         Text = 'FPS:'
         Width = 50
       end>
-    ExplicitTop = 649
-    ExplicitWidth = 1066
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 185
@@ -51,9 +49,6 @@ object FormSpace: TFormSpace
     Height = 564
     Align = alRight
     TabOrder = 2
-    ExplicitLeft = 904
-    ExplicitTop = 0
-    ExplicitHeight = 649
   end
   object PanelLeft: TPanel
     Left = 0
@@ -62,8 +57,6 @@ object FormSpace: TFormSpace
     Height = 564
     Align = alLeft
     TabOrder = 3
-    ExplicitTop = 0
-    ExplicitHeight = 649
     object PanelTop: TPanel
       Left = 1
       Top = 1
@@ -80,9 +73,6 @@ object FormSpace: TFormSpace
       Align = alBottom
       Caption = 'PanelBottom'
       TabOrder = 1
-      ExplicitLeft = -6
-      ExplicitTop = 511
-      ExplicitWidth = 185
     end
     object PageControl1: TPageControl
       Left = 1
@@ -92,7 +82,6 @@ object FormSpace: TFormSpace
       ActivePage = tsDatasets
       Align = alClient
       TabOrder = 2
-      ExplicitHeight = 359
       object tsDatasets: TTabSheet
         Caption = 'Datasets'
         object tvDatasets: TTreeView
@@ -112,10 +101,6 @@ object FormSpace: TFormSpace
             00FFFFFFFFFFFFFFFF0000000000000000000000000108470061006C00610067
             007200690064002E0000000000000000000000FFFFFFFFFFFFFFFF0000000000
             00000000000000010846006100690072007700610079007300}
-          ExplicitLeft = -8
-          ExplicitTop = 239
-          ExplicitWidth = 183
-          ExplicitHeight = 92
         end
       end
       object tsModeling: TTabSheet
@@ -144,10 +129,6 @@ object FormSpace: TFormSpace
             000000000000000000010B5000610074006800660069006E00640069006E0067
             001E0000000000000000000000FFFFFFFFFFFFFFFF0000000000000000000000
             000100}
-          ExplicitLeft = -8
-          ExplicitTop = 239
-          ExplicitWidth = 183
-          ExplicitHeight = 92
         end
       end
     end
@@ -459,5 +440,10 @@ object FormSpace: TFormSpace
       end>
     Left = 184
     Top = 8
+  end
+  object FDTable1: TFDTable
+    Connection = FDConnection1
+    Left = 268
+    Top = 258
   end
 end

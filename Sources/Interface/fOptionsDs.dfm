@@ -18,31 +18,19 @@ object frmOptions: TfrmOptions
     Top = 0
     Width = 553
     Height = 344
-    ActivePage = tsPath
+    ActivePage = tsCoordinates
     Align = alClient
     TabOrder = 0
-    object tsInterface: TTabSheet
-      Caption = 'Interface'
-    end
-    object tsStars: TTabSheet
-      Caption = 'Stars'
-      ImageIndex = 1
-    end
     object tsScenario: TTabSheet
       Caption = 'Scenario'
       ImageIndex = 2
-    end
-    object tsGalablocks: TTabSheet
-      Caption = 'Galablocks'
-      ImageIndex = 3
-    end
-    object tsCoordinates: TTabSheet
-      Caption = 'Coordinates'
-      ImageIndex = 4
+      TabVisible = False
     end
     object tsGeneral: TTabSheet
+      Tag = 1
       Caption = 'General'
       ImageIndex = 5
+      TabVisible = False
       object rgUnits: TRadioGroup
         Left = 21
         Top = 24
@@ -56,9 +44,16 @@ object frmOptions: TfrmOptions
         TabOrder = 0
       end
     end
+    object tsCoordinates: TTabSheet
+      Caption = 'Coordinates'
+      ImageIndex = 4
+      TabVisible = False
+    end
     object tsPath: TTabSheet
+      Tag = 2
       Caption = 'Path'
       ImageIndex = 6
+      TabVisible = False
     end
   end
   object tvOptions: TTreeView
@@ -70,19 +65,14 @@ object frmOptions: TfrmOptions
     AutoExpand = True
     Indent = 19
     TabOrder = 1
+    OnClick = tvOptionsClick
     Items.NodeData = {
-      03080000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
-      00000000000107470065006E006500720061006C002A00000000000000000000
-      00FFFFFFFFFFFFFFFF0000000000000000000000000106470061006C00610078
-      007900280000000000000000000000FFFFFFFFFFFFFFFF000000000000000000
-      0000000105530074006100720073002C0000000000000000000000FFFFFFFFFF
-      FFFFFF000000000000000000000000010750006C0061006E0065007400730034
+      03040000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+      00000000000107470065006E006500720061006C003400000000000000000000
+      00FFFFFFFFFFFFFFFF000000000000000000000000010B43006F006F00720064
+      0069006E0061007400650073002E0000000000000000000000FFFFFFFFFFFFFF
+      FF00000000000000000000000001085300630065006E006100720069006F0026
       0000000000000000000000FFFFFFFFFFFFFFFF00000000000000000000000001
-      0B43006F006F007200640069006E006100740065007300300000000000000000
-      000000FFFFFFFFFFFFFFFF000000000000000000000000010949006E00740065
-      00720066006100630065002E0000000000000000000000FFFFFFFFFFFFFFFF00
-      000000000000000000000001085300630065006E006100720069006F00260000
-      000000000000000000FFFFFFFFFFFFFFFF000000000000000000000000010450
-      00610074006800}
+      045000610074006800}
   end
 end

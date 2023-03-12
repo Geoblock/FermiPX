@@ -152,6 +152,7 @@ type
     tsModeling: TTabSheet;
     tvDatasets: TTreeView;
     tvModeling: TTreeView;
+    FDTable1: TFDTable;
     procedure FormCreate(Sender: TObject);
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);

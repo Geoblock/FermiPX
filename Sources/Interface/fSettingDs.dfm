@@ -50,7 +50,7 @@ object frmSettings: TfrmSettings
       Top = 5
       Width = 661
       Height = 495
-      ActivePage = tsMaterial
+      ActivePage = tsInterface
       Align = alClient
       Style = tsButtons
       TabOrder = 0
@@ -116,7 +116,7 @@ object frmSettings: TfrmSettings
           TabOrder = 3
         end
         object CheckBoxSaveProject: TCheckBox
-          Left = 209
+          Left = 200
           Top = 161
           Width = 176
           Height = 17
@@ -128,15 +128,24 @@ object frmSettings: TfrmSettings
         object rgLanguage: TRadioGroup
           Left = 26
           Top = 224
-          Width = 167
-          Height = 105
+          Width = 423
+          Height = 57
           Caption = 'Language'
+          Columns = 3
           ItemIndex = 0
           Items.Strings = (
             'English'
             'Russian'
             'Spanish')
           TabOrder = 5
+        end
+        object cbSplashStart: TCheckBox
+          Left = 382
+          Top = 161
+          Width = 131
+          Height = 18
+          Caption = 'Show splash screen'
+          TabOrder = 6
         end
       end
       object tsDisplay: TTabSheet
@@ -342,6 +351,7 @@ object frmSettings: TfrmSettings
           Font.Height = 15
           Font.Name = 'Tahoma'
           Font.Style = []
+          ItemHeight = 15
           Items.Strings = (
             '"O"'
             '"A"'
@@ -522,7 +532,7 @@ object frmSettings: TfrmSettings
         end
       end
     end
-    object TreeView: TTreeView
+    object tvSettings: TTreeView
       Left = 5
       Top = 5
       Width = 164
@@ -533,7 +543,7 @@ object frmSettings: TfrmSettings
       Images = ImageList
       Indent = 19
       TabOrder = 1
-      OnClick = TreeViewClick
+      OnClick = tvSettingsClick
       Items.NodeData = {
         0307000000300000000000000000000000FFFFFFFFFFFFFFFF00000000000000
         0000000000010949006E0074006500720066006100630065002C000000000000
@@ -547,6 +557,8 @@ object frmSettings: TfrmSettings
         007900280000000000000000000000FFFFFFFFFFFFFFFF000000000000000000
         0000000105530074006100720073002C0000000000000000000000FFFFFFFFFF
         FFFFFF000000000000000000000000010750006C0061006E00650074007300}
+      ExplicitLeft = 3
+      ExplicitTop = 6
     end
   end
   object PanelTop: TPanel

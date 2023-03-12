@@ -19,16 +19,14 @@ uses
 type
   TfrmOptions = class(TForm)
     pgOptions: TPageControl;
-    tsInterface: TTabSheet;
-    tsStars: TTabSheet;
     tsScenario: TTabSheet;
     tvOptions: TTreeView;
-    tsGalablocks: TTabSheet;
     tsCoordinates: TTabSheet;
     tsGeneral: TTabSheet;
     rgUnits: TRadioGroup;
     tsPath: TTabSheet;
     procedure FormCreate(Sender: TObject);
+    procedure tvOptionsClick(Sender: TObject);
   private
   public
   end;
@@ -62,5 +60,19 @@ begin
     FindPathOnTetraMesh(frmPath.SearchBoxA.Text, frmPath.SearchBoxB.Text);
 end;
 
+
+procedure TfrmOptions.tvOptionsClick(Sender: TObject);
+begin
+  case tvOptions.Selected.Index of
+    0:
+      pgOptions.ActivePage := tsGeneral;
+    1:
+      pgOptions.ActivePage := tsCoordinates;
+    2:
+      pgOptions.ActivePage := tsScenario;
+    3:
+      pgOptions.ActivePage := tsPath;
+  end;
+end;
 
 end.

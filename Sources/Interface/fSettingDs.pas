@@ -56,7 +56,7 @@ type
     tsMaterial: TTabSheet;
     ListView: TListView;
     ButtonModifyMat: TButton;
-    TreeView: TTreeView;
+    tvSettings: TTreeView;
     PanelTop: TPanel;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -75,7 +75,8 @@ type
     rgLanguage: TRadioGroup;
     Memo1: TMemo;
     chlbStarClasses: TCheckListBox;
-    procedure TreeViewClick(Sender: TObject);
+    cbSplashStart: TCheckBox;
+    procedure tvSettingsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -110,45 +111,34 @@ procedure TfrmSettings.FormShow(Sender: TObject);
 var
   I: Integer;
 begin
-//  Nodes := TTreeNodes.Create (TreeView);
+//  create new nodes
+//  Nodes := TTreeNodes.Create (tvSettings);
 //  Node := TTreeNode.Create (Nodes);
 //  Node := nil;
-  TreeView.Items[0].Selected := True;
-  TreeView.Items[0].Focused := True;
-  for I := 0 to TreeView.Items.Count - 1 do
+  tvSettings.Items[0].Selected := True;
+  tvSettings.Items[0].Focused := True;
+  for I := 0 to tvSettings.Items.Count - 1 do
   begin
-    TreeView.Items[i].ImageIndex := 0;
-    TreeView.Items[i].SelectedIndex := 1;
+    tvSettings.Items[i].ImageIndex := 0;
+    tvSettings.Items[i].SelectedIndex := 1;
   end;
-  TreeViewClick(Sender);
-  TreeView.Items[0].DropHighlighted := True;
-  TreeView.FullExpand;
+  tvSettingsClick(Sender);
+  tvSettings.Items[0].DropHighlighted := True;
+  tvSettings.FullExpand;
 end;
 
-procedure TfrmSettings.TreeViewClick(Sender: TObject);
+procedure TfrmSettings.tvSettingsClick(Sender: TObject);
 begin
-  TreeView.Items[0].DropHighlighted := False;
-  if TreeView.Items[0].Selected then
-  begin
-//  if (TreeView.Selected.Text = 'General') then  or use case
-//  if (TreeView.Selected.ExpandedImageIndex = 1) then
-    PageControl.ActivePage := tsInterface
-  end
-  else if TreeView.Items[1].Selected then
-//  else if (TreeView.Selected.ExpandedImageIndex = 2) then
-    PageControl.ActivePage := tsDisplay
-  else if TreeView.Items[2].Selected then
-//  else if (TreeView.Selected.ExpandedImageIndex = 3) then
-    PageControl.ActivePage := tsData
-  else if TreeView.Items[3].Selected then
-//  else if (TreeView.Selected.ExpandedImageIndex = 4) then
-    PageControl.ActivePage := tsMaterial
-    else if TreeView.Items[4].Selected then
-        PageControl.ActivePage := tsGalaxy
-    else if TreeView.Items[5].Selected then
-        PageControl.ActivePage := tsStars
-    else if TreeView.Items[6].Selected then
-        PageControl.ActivePage := tsPlanets;
+  tvSettings.Items[0].DropHighlighted := False;
+  case tvSettings.Selected.Index of
+     0: PageControl.ActivePage := tsInterface;
+     1: PageControl.ActivePage := tsDisplay;
+     2: PageControl.ActivePage := tsData;
+     3: PageControl.ActivePage := tsMaterial;
+     4: PageControl.ActivePage := tsGalaxy;
+     5: PageControl.ActivePage := tsStars;
+     6: PageControl.ActivePage := tsPlanets;
+  end;
 end;
 
 end.
